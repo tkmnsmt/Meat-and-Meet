@@ -1,0 +1,239 @@
+<div class="posts-show">
+
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">編集</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="new-field">
+            <%= form_for @post do |p| %>
+              <div class="field">
+                <%= p.label :"お店の名前" %>
+                <%= p.text_field :restaurant_name %>
+              </div>
+              <div class="field">
+                <%= p.label "写真" %>
+                <%= p.file_field :image %>
+              </div>
+              <div class="field">
+                <%= p.label "リンク" %>
+                <%= p.text_field :url %>
+              </div>
+              <div class="field">
+                <%= p.label "住所" %>
+                <%= p.text_field :address %>
+              </div>
+              <div class="field">
+                <%= p.label "ジャンル" %>
+                <%= p.select :genre, [["ステーキ","ステーキ"],["焼き肉","焼き肉"]] %>
+              </div>
+              <div class="field">
+                <%= p.label "味" %>
+                <span id="taste-star"></span>
+                <%= p.hidden_field :taste, id: "post-taste-star" %>
+              </div>
+              <div class="field">
+                <%= p.label "コストパフォーマンス" %>
+                <span id="cost_performance-star"></span>
+                <%= p.hidden_field :cost_performance, id: "post-cost_performance-star" %>
+              </div>
+              <div class="field">
+                <%= p.label "雰囲気" %>
+                <span id="atmosphere-star"></span>
+                <%= p.hidden_field :atmosphere, id: "post-atmosphere-star" %>
+              </div>
+              <div class="field">
+                <%= p.label "サービス" %>
+                <span id="service-star"></span>
+                <%= p.hidden_field :service, id: "post-service-star" %>
+              </div>
+              <div class="field">
+                <%= p.label "口コミ" %>
+                <%= p.text_area :reputation, :maxlength => "255", class: "form-control" %>
+              </div>
+
+              <div class="modal-footer">
+                <%= p.submit "編集する", class: "btn btn-danger" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="post-field">
+        <div class="post-time">
+          <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </div>
+        <div class="my-block">
+          <a href="<%= user_path(id: @post.user_id) %>">
+            <%= image_tag @post.user.image.to_s, :size => 5*5 %>
+            <%= @post.user.name %>
+          </a>
+          <% if user_signed_in? && current_user.id == @post.user_id %>
+            <div class="justify-content-end">
+              <button class="modal-edit btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-edit"></i></button>
+              <%= link_to post_path(@post.id), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="post-block">
+          <div class="first-block">
+            <div class="restaurant-field">
+              <span>お店の名前</span><br>
+              <span class="restaurant-name">　<%= @post.restaurant_name %></span>
+            </div>
+
+            <div class="field">
+              <span><%= image_tag @post.image.to_s, class: "meat-image" %></span>
+            </div>
+          </div>
+          <div class="second-block">
+            <div class="field">
+              <span class="title">リンク</span><br>
+              <span>　<a href="<%= @post.url %>" target="_blank"><%= @post.url %></a></span>
+            </div>
+
+            <div class="field">
+              <span class="title">住所</span><br>
+              <span>　<%= @post.address %></span>
+            </div>
+
+            <div class="field">
+              <span class="title">ジャンル</span><br>
+              <span>　<%= @post.genre %></span>
+            </div>
+
+            <div class="field">
+              <span class="title">評価</span>
+            </div>
+
+            <div class="field">
+              <span>　味</span>
+              <span id="taste" score="<%= @post.taste %>"></span>
+              <%= @post.taste %>
+            </div>
+            <div class="field">
+              <span>　コストパフォーマンス</span>
+              <span id="cost_performance" score="<%= @post.cost_performance %>"></span>
+              <%= @post.cost_performance %>
+            </div>
+            <div class="field">
+              <span>　雰囲気</span>
+              <span id="atmosphere" score="<%= @post.atmosphere %>"></span>
+              <%= @post.atmosphere %>
+            </div>
+            <div class="field">
+              <span>　サービス</span>
+              <span id="service" score="<%= @post.service %>"></span>
+              <%= @post.service %>
+            </div>
+
+            <div class="field">
+              <span class="title">口コミ</span><br>
+              <span>　<%= @post.reputation %></span>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script type="text/javascript">
+    window.addEventListener('turbolinks:load',()=>{
+      console.log("show");
+      const tasteStar = $("#taste")
+      tasteStar.raty({
+        path: "/",
+        readOnly: true,
+        score: tasteStar.attr("score")
+      })
+      const costPerformanceStar = $("#cost_performance")
+      costPerformanceStar.raty({
+        path: "/",
+        readOnly: true,
+        score: costPerformanceStar.attr("score")
+      })
+      const atmosphereStar = $("#atmosphere")
+      atmosphereStar.raty({
+        path: "/",
+        readOnly: true,
+        score: atmosphereStar.attr("score")
+      })
+      const serviceStar = $("#service")
+      serviceStar.raty({
+        path: "/",
+        readOnly: true,
+        score: serviceStar.attr("score")
+      })
+
+      console.log("edit");
+      $('#taste-star').raty({
+        path: "/",
+        click: function(score, _) {
+          $("#post-taste-star").val(score)
+        },
+        score: tasteStar.attr("score")
+      });
+      $('#cost_performance-star').raty({
+        path: "/",
+        click: function(score, _) {
+          $("#post-cost_performance-star").val(score)
+        },
+        score: costPerformanceStar.attr("score")
+      });
+      $('#atmosphere-star').raty({
+        path: "/",
+        click: function(score, _) {
+          $("#post-atmosphere-star").val(score)
+        },
+        score: atmosphereStar.attr("score")
+      });
+      $('#service-star').raty({
+        path: "/",
+        click: function(score, _) {
+          $("#post-service-star").val(score)
+        },
+        score: serviceStar.attr("score")
+      });
+    })
+
+  </script>
+</div>

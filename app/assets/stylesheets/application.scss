@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+
+header {
+  .navbar {
+     position: fixed;
+     height: 8vh;
+     width: 100%;
+     z-index: 100;
+     background-color: #de4b4b !important;
+   .navbar-brand {
+     color: white;
+     font-size: 25px;
+   }
+   .navbar-brand:hover {
+     color: white;
+   }
+   .navbar-nav {
+     display: flex;
+     align-items: center;
+   }
+   .nav-link {
+     color: rgba(224, 220, 220, 0.9) !important;
+     font-size: 17px;
+     margin: auto;
+   }
+   .nav-link:hover {
+     color: white !important;
+   }
+   .modal-new {
+     cursor: pointer;
+   }
+   .icon {
+     margin-right: 5px;
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     object-fit: cover;
+   }
+ }
+}
+
+
+
+
+
+footer {
+  height: 5vh;
+  background-color: #de4b4b;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    color: rgb(231, 231, 231);
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}

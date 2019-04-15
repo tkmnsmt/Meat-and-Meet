@@ -1,0 +1,156 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.posts-index {
+  .top-image {
+    background: image-url("/top.png");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    .top-block {
+      width: 43%;
+      color: white;
+      padding-top: 270px;
+      text-align: center;
+      h1 {
+        font-size: 85px;
+        background-color: rgba(222, 75, 75, 0.85);
+        margin-bottom: 0;
+        padding-top: 50px;
+        padding-bottom: 10px;
+      }
+      p {
+        font-size: 23px;
+        margin-bottom: 50px;
+        background-color: rgba(222, 75, 75, 0.85);
+        padding-bottom: 50px;
+      }
+    }
+  }
+  // .icon-image {
+  //   width: 200px;
+  //   height: 200px;
+  //   //サイズ指定
+  //   border-radius: 100px;
+  //   //画像を丸くする
+  //   object-fit: cover;
+  //   //タテヨコ比を変えないままトリミング
+  // }
+  .index-field {
+    background-color: rgba(222, 75, 75, 0.2);
+    .post-field {
+      background-color: white;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 30px;
+      border-radius: 20px;
+      .my-block {
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgb(222, 75, 75);
+        .icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .post-block {
+        display: flex;
+        .field {
+          .meat-image {
+            width: 500px;
+          }
+        }
+        .first-block {
+          padding-right: 100px;
+          .restaurant-field {
+            padding-bottom: 20px;
+            .restaurant-name {
+              color: rgb(222, 75, 75);
+              font-size: 25px;
+            }
+          }
+        }
+        .second-block {
+          .field {
+            padding-bottom: 10px;
+            .title {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+.posts-show {
+  background-color: rgba(222, 75, 75, 0.1);
+  height: 95vh;
+  .post-field {
+    background-color: white;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 30px;
+    border-radius: 20px;
+    .my-block {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgb(222, 75, 75);
+    }
+    .post-block {
+      display: flex;
+      .field {
+        .meat-image {
+          width: 500px;
+        }
+      }
+      .first-block {
+        padding-right: 100px;
+        .restaurant-field {
+          padding-bottom: 20px;
+          .restaurant-name {
+            color: rgb(222, 75, 75);
+            font-size: 25px;
+          }
+        }
+      }
+      .second-block {
+        .field {
+          padding-bottom: 10px;
+          .title {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.posts-new {
+  padding-top: 100px;
+}

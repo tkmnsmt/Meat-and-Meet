@@ -1,0 +1,15 @@
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/bindex-0.7.0/ext/skiptrace
+/Users/napple.t/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20190412-14147-19tdv1k.rb extconf.rb
+creating Makefile
+
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/cruby.bundle
+
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20190412-14147-4xj42i/skiptrace

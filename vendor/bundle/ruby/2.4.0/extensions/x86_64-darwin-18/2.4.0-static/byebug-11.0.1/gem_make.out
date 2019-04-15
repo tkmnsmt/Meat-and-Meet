@@ -1,0 +1,19 @@
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/byebug-11.0.1/ext/byebug
+/Users/napple.t/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20190412-14147-177b9bf.rb extconf.rb
+creating Makefile
+
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/napple.t/Desktop/meat_and_meet/vendor/bundle/ruby/2.4.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20190412-14147-1hx7uv5/byebug

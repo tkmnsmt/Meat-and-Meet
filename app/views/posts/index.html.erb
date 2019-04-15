@@ -1,0 +1,333 @@
+<div class="posts-index">
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">投稿</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="new-field">
+            <%= form_for @post do |p| %>
+              <div class="field">
+                <%= p.label :"お店の名前" %>
+                <%= p.text_field :restaurant_name %>
+              </div>
+              <div class="field">
+                <%= p.label "写真" %>
+                <%= p.file_field :image %>
+              </div>
+              <div class="field">
+                <%= p.label "リンク" %>
+                <%= p.text_field :url %>
+              </div>
+              <div class="field">
+                <%= p.label "住所" %>
+                <%= p.text_field :address %>
+              </div>
+              <div class="field">
+                <%= p.label "ジャンル" %>
+                <%= p.select :genre, [["ステーキ","ステーキ"],["焼き肉","焼き肉"]], include_blank: true %>
+              </div>
+              <div class="field">
+                <%= p.label "味" %>
+                <span id="taste-star"></span>
+                <%= p.hidden_field :taste, id: "post-taste-star",:value => 0 %>
+              </div>
+              <div class="field">
+                <%= p.label "コストパフォーマンス" %>
+                <span id="cost_performance-star"></span>
+                <%= p.hidden_field :cost_performance, id: "post-cost_performance-star",:value => 0 %>
+              </div>
+              <div class="field">
+                <%= p.label "雰囲気" %>
+                <span id="atmosphere-star"></span>
+                <%= p.hidden_field :atmosphere, id: "post-atmosphere-star",:value => 0 %>
+              </div>
+              <div class="field">
+                <%= p.label "サービス" %>
+                <span id="service-star"></span>
+                <%= p.hidden_field :service, id: "post-service-star" %>
+              </div>
+              <div class="field">
+                <%= p.label "口コミ" %>
+                <%= p.text_area :reputation, :maxlength => "255", class: "form-control" %>
+              </div>
+
+              <div class="modal-footer">
+                <%= p.submit "投稿", class: "btn btn-danger" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="top-image">
+    <div class="top-block">
+      <h1>Meat and Meet</h1>
+      <p>〜お肉好きのあなたとマッチングするサービス〜</p>
+    </div>
+  </div>
+  <% @posts.each do |post| %>
+
+    <div class="index-field">
+      <div class="container">
+        <div class="row">
+          <div class="post-field">
+            <div class="post-time">
+              <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </div>
+            <div class="my-block">
+              <a href="<%= user_path(id: post.user_id) %>">
+                <%= image_tag post.user.image.to_s, class: "icon" %>
+                <%= post.user.name %>
+              </a>
+            </div>
+            <div class="post-block">
+              <div class="first-block">
+                <div class="restaurant-field">
+                  <span >お店の名前</span><br>
+                  <span class="restaurant-name">　<%= post.restaurant_name %></span>
+                </div>
+
+                <div class="field">
+                  <span><%= image_tag post.image.to_s, class: "meat-image" %></span>
+                </div>
+              </div>
+              <div class="second-block">
+                <div class="field">
+                  <span class="title">リンク</span><br>
+                  <span>　<a href="<%= post.url %>" target="_blank"><%= post.url %></a></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">住所</span><br>
+                  <span>　<%= post.address %></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">ジャンル</span><br>
+                  <span>　<%= post.genre %></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">評価</span><br>
+                  　
+                  <span class="average-star" score="<%= post.average %>"></span>
+                  <span><%= post.average %></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">口コミ</span><br>
+                  　
+                  <span><%= post.reputation %></span>
+                </div>
+
+                <%= link_to "詳細", post_path(post.id) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $(function(){
+    var error = 0;
+    $("form").submit(function(){
+      var error_again = 0;
+      if($("input[name='post[restaurant_name]']").val() == ""){
+        if($(".restaurant_name").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[restaurant_name]']").css("border","2px solid red").after("<span class='restaurant_name'>名前を入力してください</span>");
+          $(".restaurant_name").css("color","red");
+          error += 1
+        }
+      } else {
+        $("input[name='post[restaurant_name]']").css("border","")
+        $(".restaurant_name").remove();
+        error_again += 1;
+      };
+
+      if($("input[name='post[image]']").val() == ""){
+        if($(".image").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[image]']").css("border","2px solid red").after("<span class='image'>写真を投稿してください</span>");
+          $(".image").css("color","red");
+          error += 1
+        }
+      } else {
+        $("input[name='post[image]']").css("border","")
+        $(".image").remove();
+        error_again += 1
+      };
+
+      if($("input[name='post[url]']").val() == ""){
+        if($(".url").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[url]']").css("border","2px solid red").after("<span class='url'>リンクを入力してください</span>");
+          $(".url").css("color","red");
+          error += 1
+        }
+      } else {
+        $("input[name='post[url]']").css("border","")
+        $(".url").remove();
+        error_again += 1;
+      };
+
+      if($("input[name='post[address]']").val() == ""){
+        if($(".address").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[address]']").css("border","2px solid red").after("<span class='address'>住所を入力してください</span>");
+          $(".address").css("color","red");
+          error += 1
+        }
+      } else {
+        $("input[name='post[address]']").css("border","")
+        $(".address").remove();
+        error_again += 1;
+      };
+
+      if($("select[name='post[genre]']").val() == ""){
+        if($(".genre").css("color")!= "rgb(255, 0, 0)"){
+          $("select[name='post[genre]']").css("border","2px solid red").after("<span class='genre'>ジャンルを選択してください</span>");
+          $(".genre").css("color","red");
+          error += 1;
+        }
+      } else {
+        $("select[name='post[genre]']").css("border","")
+        $(".genre").remove();
+        error_again += 1;
+      };
+
+      if($("input[name='post[taste]']").val() == 0){
+        if($(".taste").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[taste]']").css("border","2px solid red").after("<span class='taste'>味の評価を選択してください</span>");
+          $(".taste").css("color","red");
+          error += 1;
+        }
+      } else {
+        $("input[name='post[taste]']").css("border","")
+        $(".taste").remove();
+        error_again += 1;
+      };
+
+      if($("input[name='post[cost_performance]']").val() == 0){
+        if($(".cost_performance").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[cost_performance]']").css("border","2px solid red").after("<span class='cost_performance'>コストパフォーマンスの評価を選択してください</span>");
+          $(".cost_performance").css("color","red");
+          error += 1;
+        }
+      } else {
+        $("input[name='post[cost_performance]']").css("border","")
+        $(".cost_performance").remove();
+        error_again += 1;
+      };
+
+      if($("input[name='post[atmosphere]']").val() == 0){
+        if($(".atmosphere").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[atmosphere]']").css("border","2px solid red").after("<span class='atmosphere'>雰囲気の評価を選択してください</span>");
+          $(".atmosphere").css("color","red");
+          error += 1;
+        }
+      } else {
+        $("input[name='post[atmosphere]']").css("border","")
+        $(".atmosphere").remove();
+        error_again += 1;
+      };
+
+      if($("input[name='post[service]']").val() == 0){
+        if($(".service").css("color")!= "rgb(255, 0, 0)"){
+          $("input[name='post[service]']").css("border","2px solid red").after("<span class='service'>サービスの評価を選択してください</span>");
+          $(".service").css("color","red");
+          error += 1;
+        }
+      } else {
+        $("input[name='post[service]']").css("border","")
+        $(".service").remove();
+        error_again += 1;
+      };
+
+      if($("textarea[name='post[reputation]']").val() == ""){
+        if($(".reputation").css("color") != "rgb(255, 0, 0)"){
+          $("textarea[name='post[reputation]']").css("border","2px solid red").after("<span class='reputation'>口コミを入力してください</span>");
+          $(".reputation").css("color","red");
+          error += 1
+        }
+      } else {
+        $("textarea[name='post[reputation]']").css("border","")
+        $(".reputation").remove();
+        error_again += 1
+      };
+      console.log(error_again)
+      if(error_again != 6){
+        return false;
+      }
+    });
+
+  })
+</script>
+<script>
+  window.addEventListener('turbolinks:load',()=>{
+    console.log("index");
+    const allStars = $(".average-star")
+    allStars.each((_, elem)=>{
+      const stars = $(elem)
+      stars.raty({
+        path: "/",
+        readOnly: true,
+        score: stars.attr("score")
+      })
+    })
+  });
+
+
+
+  window.addEventListener('turbolinks:load',()=>{
+    console.log("new");
+    $('#taste-star').raty({
+      path: "/",
+      click: function(score, _) {
+        $("#post-taste-star").val(score)
+      }
+    });
+    $('#cost_performance-star').raty({
+      path: "/",
+      click: function(score, _) {
+        $("#post-cost_performance-star").val(score)
+      }
+    });
+    $('#atmosphere-star').raty({
+      path: "/",
+      click: function(score, _) {
+        $("#post-atmosphere-star").val(score)
+      }
+    });
+    $('#service-star').raty({
+      path: "/",
+      click: function(score, _) {
+        $("#post-service-star").val(score)
+      }
+    });
+  })
+</script>
