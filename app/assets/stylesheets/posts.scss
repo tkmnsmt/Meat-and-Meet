@@ -1,10 +1,19 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+#map {
+  height: 500px;
+  margin: 20px 0;
+}
 
 
 .posts-index {
+  .new-field {
+    #image_prev {
+      width: 400px;
+      padding: 5px 0;
+    }
+  }
   .top-image {
     background: image-url("/top.png");
     background-size: cover;
@@ -16,6 +25,7 @@
       padding-top: 270px;
       text-align: center;
       h1 {
+        font-family: 'Francois One', sans-serif;
         font-size: 85px;
         background-color: rgba(222, 75, 75, 0.85);
         margin-bottom: 0;
@@ -23,7 +33,7 @@
         padding-bottom: 10px;
       }
       p {
-        font-size: 23px;
+        font-size: 22px;
         margin-bottom: 50px;
         background-color: rgba(222, 75, 75, 0.85);
         padding-bottom: 50px;
@@ -48,19 +58,32 @@
       margin-bottom: 20px;
       padding: 30px;
       border-radius: 20px;
+      .post-time {
+        padding-bottom: 5px;
+      }
       .my-block {
         padding-bottom: 5px;
         margin-bottom: 20px;
         border-bottom: 1px solid rgb(222, 75, 75);
         .icon {
-          width: 40px;
-          height: 40px;
+          width: 50px;
+          height: 50px;
           border-radius: 50%;
           object-fit: cover;
+        }
+        .user {
+          color: black;
+          font-size: 20px;
+          text-decoration: none;
+        }
+        .user:hover {
+          color: rgb(222, 75, 75);
+          // border-bottom: 1px solid rgb(222, 75, 75);
         }
       }
       .post-block {
         display: flex;
+        padding-left: 30px;
         .field {
           .meat-image {
             width: 500px;
@@ -97,13 +120,12 @@
 
 
 .posts-show {
-  background-color: rgba(222, 75, 75, 0.1);
-  height: 95vh;
+  background-color: rgba(222, 75, 75, 0.2);
   .post-field {
     background-color: white;
     width: 100%;
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     padding: 30px;
     border-radius: 20px;
     .my-block {
@@ -112,9 +134,15 @@
       padding-bottom: 5px;
       margin-bottom: 20px;
       border-bottom: 1px solid rgb(222, 75, 75);
+      .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
     }
     .post-block {
-      display: flex;
+      padding: 0 50px;
       .field {
         .meat-image {
           width: 500px;

@@ -98,28 +98,55 @@
             <% end %>
           <% end %>
 
+
+
+
+
+          <% if @user.id == current_user.id %>
+            <p><a href="/rooms">チャット一覧</a></p>
+          <% else %>
+            <% if @isRoom == true %>
+              <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, :value=> @user.id %>
+                <% end %>
+                <%= f.submit "チャットを始める" %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <a href="/likes/liked_posts/<%= @user.id %>">いいねしている投稿</a>
+
+
+
+
+
+
           <div class="field">
+            <span>名前：</span>
             <span><%= @user.name %></span>
           </div>
-          <% if current_user.persisted? && current_user.image? %>
-            <div class="field">
-              <span><%= image_tag @user.image.to_s, :size => 5*5 %></span>
-            </div>
-          <% else %>
-            <div class="field">
-              <span><%= image_tag '/no_image.png', class: "icon" %></span>
-            </div>
-          <% end %>
+            <% if current_user.persisted? && current_user.image? %>
+              <% if @user.image? %>
+                <%= image_tag @user.image.to_s, class: "icon" %>
+              <% else %>
+                <%= image_tag '/no_image.png', class: "icon" %>
+              <% end %>
+            <% else %>
+              <% if @user.image? %>
+                <%= image_tag @user.image.to_s, class: "icon" %>
+              <% else %>
+                <%= image_tag '/no_image.png', class: "icon" %>
+              <% end %>
+            <% end %>
           <div class="field">
-            <span><%= @user.gender_id %></span>
-          </div>
-          <div class="field">
+            <span>年齢：</span>
             <span><%= @user.age %>歳</span>
           </div>
           <div class="field">
-            <span><%= @user.address_id %></span>
-          </div>
-          <div class="field">
+            <span>自己紹介（お肉への熱い想い）:</span>
             <span><%= @user.introduce %></span>
           </div>
         </div>
@@ -178,7 +205,19 @@
                   <span><%= post.reputation %></span>
                 </div>
 
-                <%= link_to "詳細", post_path(post.id) %>
+                <%= link_to post_path(post.id) do %>
+                  <i class="fas fa-info-circle"></i>
+                <% end %>
+
+                <%# if post.likes.count != 0 %>
+                  <a href="/posts/<%= post.id %>/likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
+                <%# end %><br>
+
+                <div id="likes_buttons_<%= post.id %>">
+                   <%= render partial: 'likes/like', locals: { post: post } %>
+                </div>
+
+
               </div>
             </div>
           </div>
@@ -186,6 +225,7 @@
       </div>
     </div>
   <% end %>
+  <%= paginate @posts %>
 
   <script>
     window.addEventListener('turbolinks:load',()=>{

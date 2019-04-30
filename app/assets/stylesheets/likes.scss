@@ -1,0 +1,76 @@
+// Place all the styles related to the likes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.likes-index {
+  padding-top: 100px;
+  .icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.likes-liked_posts {
+  .index-field {
+    padding-top: 100px;
+    background-color: rgba(222, 75, 75, 0.2);
+    .post-field {
+      background-color: white;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 30px;
+      border-radius: 20px;
+      .my-block {
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgb(222, 75, 75);
+        .icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .post-block {
+        display: flex;
+        padding-left: 30px;
+        .field {
+          .meat-image {
+            width: 500px;
+          }
+        }
+        .first-block {
+          padding-right: 100px;
+          .restaurant-field {
+            padding-bottom: 20px;
+            .restaurant-name {
+              color: rgb(222, 75, 75);
+              font-size: 25px;
+            }
+          }
+        }
+        .second-block {
+          .field {
+            padding-bottom: 10px;
+            .title {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

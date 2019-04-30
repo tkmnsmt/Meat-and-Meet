@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_094627) do
+ActiveRecord::Schema.define(version: 2019_04_26_112545) do
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
@@ -38,6 +66,12 @@ ActiveRecord::Schema.define(version: 2019_04_12_094627) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -49,8 +83,6 @@ ActiveRecord::Schema.define(version: 2019_04_12_094627) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.text "introduce"
-    t.integer "gender_id"
-    t.integer "address_id"
     t.date "birthday"
     t.string "provider"
     t.string "uid"

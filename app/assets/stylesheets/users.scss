@@ -25,8 +25,8 @@
   background: image-url("/top.png");
   background-size: cover;
   padding-top: 200px;
-  padding-bottom: 167px;
-  // height: 95vh;
+  // padding-bottom: 167px;
+  height: 95vh;
   .login-block {
     .login {
       font-weight: bold;
@@ -63,8 +63,8 @@
   background: image-url("/top.png");
   background-size: cover;
   padding-top: 200px;
-  padding-bottom: 150px;
-  // height: 95vh;
+  // padding-bottom: 150px;
+  height: 95vh;
   .sign-up-block {
     .sign-up {
       font-weight: bold;
@@ -190,17 +190,35 @@
 
 .users-shared-links {
   // text-align: center;
+  .sns-login {
+    width: 55%;
+    .facebook-login {
+      color: white;
+      width: 100%;
+      background-color: #4267b2;
+      text-decoration: none;
+      padding: 10px 0 10px 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-top: 5px;
+    }
+    .facebook-login:hover {
+      background-color: #29487d;
+    }
+    .twitter-login {
+      width: 100%;
+      color: white;
+      background-color: #1da1f2;
+      text-decoration: none;
+      padding: 10px 0 10px 15px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .twitter-login:hover {
+      background-color: #2786d4;
+    }
+  }
   .links {
     color: white;
-  }
-  .facebook-login {
-    color: white;
-    background-color: #4267b2;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-  }
-  .facebook-login:hover {
-    background-color: #29487d;
   }
 }

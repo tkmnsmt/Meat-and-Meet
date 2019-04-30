@@ -4,8 +4,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :posts, only: [:index, :create, :show, :update, :destroy]
+  resources :posts, only: [:index, :create, :show, :update, :destroy] do
+    resources :likes, only: [:index, :create, :destroy]
+  end
+  get "likes/liked_posts/:id" => "likes#liked_posts"
   resources :users, only: [:show]
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:index, :create, :show, :index]
   # resources :searches, only: [:index]
   devise_scope :user do
     get 'profile_edit', to: 'users/registrations#profile_edit', as: 'profile_edit'

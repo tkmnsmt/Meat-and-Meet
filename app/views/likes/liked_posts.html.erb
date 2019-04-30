@@ -1,0 +1,135 @@
+<div class="likes-liked_posts">
+  <div class="index-field">
+    <div class="container">
+      <div class="row">
+        <% @likes.each do |post| %>
+          <div class="post-field">
+            <div class="post-time">
+              <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </div>
+            <div class="my-block">
+              <% if user_signed_in? %>
+                <% if current_user.persisted? && current_user.image? %>
+                  <% if post.user.image? %>
+                    <a href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag post.user.image.to_s, class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% else %>
+                    <a href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag '/no_image.png', class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% end %>
+                <% else %>
+                  <% if post.user.image? %>
+                    <a href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag post.user.image.to_s, class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% else %>
+                    <a href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag '/no_image.png', class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <% if post.user.image? %>
+                  <a href="<%= user_path(id: post.user_id) %>">
+                    <%= image_tag post.user.image.to_s, class: "icon" %>
+                    <%= post.user.name %>
+                  </a>
+                <% else %>
+                  <a href="<%= user_path(id: post.user_id) %>">
+                    <%= image_tag '/no_image.png', class: "icon" %>
+                    <%= post.user.name %>
+                  </a>
+                <% end %>
+
+              <% end %>
+            </div>
+            <div class="post-block">
+              <div class="first-block">
+                <div class="restaurant-field">
+                  <span >お店の名前</span><br>
+
+                  <span class="restaurant-name">　<%= post.restaurant_name %></span>
+                </div>
+
+                <div class="field">
+                  <span><%= image_tag post.image.to_s, class: "meat-image" %></span>
+                </div>
+              </div>
+              <div class="second-block">
+                <div class="field">
+                  <span class="title">リンク</span><br>
+                  <span>　<a href="<%= post.url %>" target="_blank"><%= post.url %></a></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">住所</span><br>
+                  <span>　<%= post.address %></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">ジャンル</span><br>
+                  <span>　<%= post.genre %></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">評価</span><br>
+                  　
+                  <span class="average-star" score="<%= post.average %>"></span>
+                  <span><%= post.average %></span>
+                </div>
+
+                <div class="field">
+                  <span class="title">口コミ</span><br>
+                  　
+                  <span><%= post.reputation %></span>
+                </div>
+
+                <%= link_to post_path(post.id) do %>
+                  <i class="fas fa-info-circle"></i>
+                <% end %>
+
+                <%# if post.likes.count != 0 %>
+                  <a href="/posts/<%= post.id %>/likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
+                <%# end %><br>
+
+                <div id="likes_buttons_<%= post.id %>">
+                   <%= render partial: 'likes/like', locals: { post: post } %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= paginate @likes %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  window.addEventListener('turbolinks:load',()=>{
+    console.log("index");
+    const allStars = $(".average-star")
+    allStars.each((_, elem)=>{
+      const stars = $(elem)
+      stars.raty({
+        path: "/",
+        readOnly: true,
+        score: stars.attr("score")
+      })
+    })
+  });
+</script>

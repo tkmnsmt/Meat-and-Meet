@@ -25,8 +25,20 @@
                 <%= p.text_field :restaurant_name %>
               </div>
               <div class="field">
-                <%= p.label "写真" %>
-                <%= p.file_field :image %>
+                <%#= p.label "写真" %>
+                <%#= p.file_field :image %>
+
+                <%= p.file_field :image, id: 'post_img' %>
+                <%#= f.label :image, "プロフィール画像" %>
+                <!-- <img id="image_prev" src="/no_image.png" class='hidden' /> -->
+                <%# if current_user.persisted? && current_user.image? %>
+                  <%#= image_tag current_user.image.to_s, id: "image_prev", class: 'hidden' %>
+
+                <%# else %>
+                  <%= image_tag '', class: 'hidden', id: "image_prev" %>
+                  <%= p.hidden_field :image_cache %>
+                <%# end %>
+
               </div>
               <div class="field">
                 <%= p.label "リンク" %>
@@ -90,25 +102,63 @@
       <p>〜お肉好きのあなたとマッチングするサービス〜</p>
     </div>
   </div>
-  <% @posts.each do |post| %>
 
-    <div class="index-field">
-      <div class="container">
-        <div class="row">
+
+  <div class="index-field">
+    <div class="container">
+      <div class="row">
+        <% @posts.each do |post| %>
           <div class="post-field">
             <div class="post-time">
               <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
             </div>
             <div class="my-block">
-              <a href="<%= user_path(id: post.user_id) %>">
-                <%= image_tag post.user.image.to_s, class: "icon" %>
-                <%= post.user.name %>
-              </a>
+              <% if user_signed_in? %>
+                <% if current_user.persisted? && current_user.image? %>
+                  <% if post.user.image? %>
+                    <a class="user" href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag post.user.image.to_s, class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% else %>
+                    <a class="user" href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag '/no_image.png', class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% end %>
+                <% else %>
+                  <% if post.user.image? %>
+                    <a class="user" href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag post.user.image.to_s, class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% else %>
+                    <a class="user" href="<%= user_path(id: post.user_id) %>">
+                      <%= image_tag '/no_image.png', class: "icon" %>
+                      <%= post.user.name %>
+                    </a>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <% if post.user.image? %>
+                  <a class="user" href="<%= user_path(id: post.user_id) %>">
+                    <%= image_tag post.user.image.to_s, class: "icon" %>
+                    <%= post.user.name %>
+                  </a>
+                <% else %>
+                  <a class="user" href="<%= user_path(id: post.user_id) %>">
+                    <%= image_tag '/no_image.png', class: "icon" %>
+                    <%= post.user.name %>
+                  </a>
+                <% end %>
+
+              <% end %>
             </div>
             <div class="post-block">
               <div class="first-block">
                 <div class="restaurant-field">
                   <span >お店の名前</span><br>
+
                   <span class="restaurant-name">　<%= post.restaurant_name %></span>
                 </div>
 
@@ -145,14 +195,26 @@
                   <span><%= post.reputation %></span>
                 </div>
 
-                <%= link_to "詳細", post_path(post.id) %>
+                <%= link_to post_path(post.id) do %>
+                  <i class="fas fa-info-circle"></i>
+                <% end %>
+
+                <%# if post.likes.count != 0 %>
+                  <a href="/posts/<%= post.id %>/likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
+                <%# end %><br>
+
+                <div id="likes_buttons_<%= post.id %>">
+                   <%= render partial: 'likes/like', locals: { post: post } %>
+                </div>
+
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
+    <%= paginate @posts %>
+  </div>
 </div>
 
 <script>
@@ -280,13 +342,15 @@
         error_again += 1
       };
       console.log(error_again)
-      if(error_again != 6){
+      if(error_again != 10){
         return false;
       }
     });
-
   })
 </script>
+
+
+
 <script>
   window.addEventListener('turbolinks:load',()=>{
     console.log("index");
@@ -330,4 +394,5 @@
       }
     });
   })
+
 </script>

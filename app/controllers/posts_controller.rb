@@ -3,15 +3,17 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order("id DESC")
+    @posts = Post.all.order("id DESC").page(params[:page]).per(5)
     @post = Post.new
-    if user_signed_in? && current_user.name == ""
+    @like = Like.new
+    if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
       redirect_to profile_edit_path
     end
   end
 
   def show
     @post = Post.find(params[:id])
+    @like = Like.new
   end
 
   def new
@@ -23,7 +25,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @posts = Post.all.order("id DESC")
     if @post.save
-      redirect_to controller: "users", action: "show"
+      redirect_to action: "index"
     else
       render action: "index"
     end
@@ -49,7 +51,7 @@ class PostsController < ApplicationController
 
   private
   def params_new
-    params.require(:post).permit(:image, :url, :address, :restaurant_name, :taste, :cost_performance, :service, :atmosphere, :reputation, :genre)
+    params.require(:post).permit(:image, :url, :address, :latitude, :longitude, :restaurant_name, :taste, :cost_performance, :service, :atmosphere, :reputation, :genre)
   end
 
 

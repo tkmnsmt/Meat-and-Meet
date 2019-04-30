@@ -1,0 +1,32 @@
+<div class="likes-index">
+  <h2>いいねされました</h2>
+  <% @likes.each do |like| %>
+    <%= link_to user_path(like.id) do %>
+      <div class="field">
+        <span>名前：</span>
+        <span><%= like.name %></span>
+      </div>
+        <% if current_user.persisted? && current_user.image? %>
+          <% if like.image? %>
+            <%= image_tag like.image.to_s, class: "icon" %>
+          <% else %>
+            <%= image_tag '/no_image.png', class: "icon" %>
+          <% end %>
+        <% else %>
+          <% if like.image? %>
+            <%= image_tag like.image.to_s, class: "icon" %>
+          <% else %>
+            <%= image_tag '/no_image.png', class: "icon" %>
+          <% end %>
+        <% end %>
+      <div class="field">
+        <span>年齢：</span>
+        <span><%= like.age %>歳</span>
+      </div>
+      <div class="field">
+        <span>自己紹介（お肉への熱い想い）:</span>
+        <span><%= like.introduce %></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
