@@ -1,0 +1,174 @@
+find_executable: checking for brew... -------------------- yes
+
+--------------------
+
+find_executable: checking for clang... -------------------- yes
+
+--------------------
+
+find_executable: checking for pkg-config... -------------------- yes
+
+--------------------
+
+configure_compile_options: checking for outdated ImageMagick version (<= 6.7.7)... -------------------- no
+
+Detected ImageMagick version: 6.9.10
+--------------------
+
+assert_minimum_ruby_version!: checking for Ruby version >= 2.3.0... -------------------- yes
+
+--------------------
+
+have_header: checking for sys/types.h... -------------------- yes
+
+"clang -o conftest -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/x86_64-darwin18 -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/ruby/backward -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6 conftest.c  -L. -L/Users/napple.t/.rbenv/versions/2.4.1/lib  -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16    -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16  -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"clang -E -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/x86_64-darwin18 -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/ruby/backward -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/types.h>
+/* end */
+
+--------------------
+
+have_header: checking for magick/MagickCore.h... -------------------- yes
+
+"clang -E -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/x86_64-darwin18 -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/ruby/backward -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <magick/MagickCore.h>
+/* end */
+
+--------------------
+
+have_func: checking for snprintf() in assert.h,ctype.h,stdio.h,stdlib.h,math.h,time.h,sys/types.h,magick/MagickCore.h... -------------------- yes
+
+"clang -o conftest -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/x86_64-darwin18 -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/ruby/backward -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6 conftest.c  -L. -L/Users/napple.t/.rbenv/versions/2.4.1/lib  -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16    -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16  -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <assert.h>
+ 4: #include <ctype.h>
+ 5: #include <stdio.h>
+ 6: #include <stdlib.h>
+ 7: #include <math.h>
+ 8: #include <time.h>
+ 9: #include <sys/types.h>
+10: #include <magick/MagickCore.h>
+11: 
+12: /*top*/
+13: extern int t(void);
+14: int main(int argc, char **argv)
+15: {
+16:   if (argc > 1000000) {
+17:     printf("%p", &t);
+18:   }
+19: 
+20:   return 0;
+21: }
+22: int t(void) { void ((*volatile p)()); p = (void ((*)()))snprintf; return !p; }
+/* end */
+
+--------------------
+
+have_func: checking for GetImageChannelEntropy() in assert.h,ctype.h,stdio.h,stdlib.h,math.h,time.h,sys/types.h,magick/MagickCore.h... -------------------- yes
+
+"clang -o conftest -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/x86_64-darwin18 -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/ruby/backward -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6 conftest.c  -L. -L/Users/napple.t/.rbenv/versions/2.4.1/lib  -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16    -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16  -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <assert.h>
+ 4: #include <ctype.h>
+ 5: #include <stdio.h>
+ 6: #include <stdlib.h>
+ 7: #include <math.h>
+ 8: #include <time.h>
+ 9: #include <sys/types.h>
+10: #include <magick/MagickCore.h>
+11: 
+12: /*top*/
+13: extern int t(void);
+14: int main(int argc, char **argv)
+15: {
+16:   if (argc > 1000000) {
+17:     printf("%p", &t);
+18:   }
+19: 
+20:   return 0;
+21: }
+22: int t(void) { void ((*volatile p)()); p = (void ((*)()))GetImageChannelEntropy; return !p; }
+/* end */
+
+--------------------
+
+have_func: checking for SetImageGray() in assert.h,ctype.h,stdio.h,stdlib.h,math.h,time.h,sys/types.h,magick/MagickCore.h... -------------------- yes
+
+"clang -o conftest -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/x86_64-darwin18 -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0/ruby/backward -I/Users/napple.t/.rbenv/versions/2.4.1/include/ruby-2.4.0 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6 conftest.c  -L. -L/Users/napple.t/.rbenv/versions/2.4.1/lib  -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16    -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16  -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <assert.h>
+ 4: #include <ctype.h>
+ 5: #include <stdio.h>
+ 6: #include <stdlib.h>
+ 7: #include <math.h>
+ 8: #include <time.h>
+ 9: #include <sys/types.h>
+10: #include <magick/MagickCore.h>
+11: 
+12: /*top*/
+13: extern int t(void);
+14: int main(int argc, char **argv)
+15: {
+16:   if (argc > 1000000) {
+17:     printf("%p", &t);
+18:   }
+19: 
+20:   return 0;
+21: }
+22: int t(void) { void ((*volatile p)()); p = (void ((*)()))SetImageGray; return !p; }
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+ 1: #ifndef EXTCONF_H
+ 2: #define EXTCONF_H
+ 3: #define HAVE_SYS_TYPES_H 1
+ 4: #define HAVE_MAGICK_MAGICKCORE_H 1
+ 5: #define HAVE_SNPRINTF 1
+ 6: #define HAVE_GETIMAGECHANNELENTROPY 1
+ 7: #define HAVE_SETIMAGEGRAY 1
+ 8: #define RUBY_VERSION_STRING ruby 2.4.1
+ 9: #define RMAGICK_VERSION_STRING RMagick 3.1.0
+10: #define IMAGEMAGICK_GREATER_THAN_EQUAL_6_8_9 1
+11: #endif
+/* end */
+
+
+
+======================================================================
+Tue 30 Apr 19 13:54:10
+This installation of RMagick 3.1.0 is configured for
+Ruby 2.4.1 (x86_64-darwin18) and ImageMagick 6.9.10
+======================================================================
+
+
+Configured compile options: {:magick_version=>"6.9.10", :local_libs=>" -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16", :cflags=>" -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6", :cppflags=>" -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick@6/6.9.10-27/include/ImageMagick-6", :ldflags=>" -L/usr/local/Cellar/imagemagick@6/6.9.10-27/lib -lMagickCore-6.Q16", :defs=>[], :config_h=>"Makefile rmagick.h"}
