@@ -9,9 +9,18 @@
 
 .posts-index {
   .new-field {
+    #post_img {
+      padding-bottom: 5px;
+    }
     #image_prev {
       width: 400px;
       padding: 5px 0;
+    }
+    .form {
+      width: 80%;
+    }
+    .form-control {
+      height: 150px;
     }
   }
   .top-image {
@@ -54,7 +63,7 @@
     .post-field {
       background-color: white;
       width: 100%;
-      margin-top: 20px;
+      margin-top: 30px;
       margin-bottom: 20px;
       padding: 30px;
       border-radius: 20px;
@@ -62,9 +71,12 @@
         padding-bottom: 5px;
       }
       .my-block {
-        padding-bottom: 5px;
+        padding-bottom: 10px;
         margin-bottom: 20px;
-        border-bottom: 1px solid rgb(222, 75, 75);
+        border-bottom: 2px solid rgb(222, 75, 75);
+        .user-icon {
+          text-decoration: none;
+        }
         .icon {
           width: 50px;
           height: 50px;
@@ -74,36 +86,81 @@
         .user {
           color: black;
           font-size: 20px;
-          text-decoration: none;
+          font-weight: bold;
+          // text-decoration: none;
+          border-bottom: 1px solid black;
         }
         .user:hover {
           color: rgb(222, 75, 75);
-          // border-bottom: 1px solid rgb(222, 75, 75);
+          border-bottom: 1px solid rgb(222, 75, 75);
         }
       }
       .post-block {
         display: flex;
-        padding-left: 30px;
+        // padding-left: 10px;
         .field {
           .meat-image {
-            width: 500px;
+            width: 450px;
           }
         }
         .first-block {
+          padding-left: 30px;
           padding-right: 100px;
           .restaurant-field {
             padding-bottom: 20px;
             .restaurant-name {
               color: rgb(222, 75, 75);
               font-size: 25px;
+              font-weight: bold;
+              padding-left: 16px;
             }
           }
         }
         .second-block {
+          padding-left: 50px;
+
           .field {
-            padding-bottom: 10px;
+            padding-bottom: 15px;
             .title {
               font-size: 18px;
+            }
+            .link {
+              font-family: serif;
+            }
+          }
+          .reputation-field {
+            padding-bottom: 30px;
+          }
+          
+          .posts-show-like {
+            // display: flex;
+            // justify-content: flex-end;
+            .number-likes {
+              color: black;
+              border-bottom: 1px solid black;
+              // font-size: 18px;
+            }
+            .number-likes:hover {
+              color: rgb(222, 75, 75);
+              border-bottom: 1px solid rgb(222, 75, 75);
+            }
+            .posts-show-like-icon {
+              display: flex;
+              align-items: flex-end;
+              padding-top: 10px;
+              .icon-link {
+                text-decoration: none;
+              }
+              .icon {
+                color: rgb(222, 75, 75);
+                font-size: 20px;
+              }
+              // .icon:hover {
+              //   color: rgb(222, 75, 75);
+              // }
+              .likes-count {
+                padding-right: 20px;
+              }
             }
           }
         }
