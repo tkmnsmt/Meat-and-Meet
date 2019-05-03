@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
     end
 
     @anotherEntries = Message.where(room_id: myRoomIds).order(created_at: "DESC").uniq { |m| m.room_id }.map{|e| e.room.entries.find_by("user_id != ?", current_user.id)}
+    
   end
 
   def create

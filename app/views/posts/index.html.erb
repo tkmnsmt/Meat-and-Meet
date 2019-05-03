@@ -185,12 +185,14 @@
 
                   <div class="field">
                     <span class="title">住所</span><br>
-                    <span>　<%= post.address %></span>
+                    　
+                    <span><%= post.address %></span>
                   </div>
 
                   <div class="field">
                     <span class="title">ジャンル</span><br>
-                    <span>　<%= post.genre %></span>
+                    　
+                    <span><%= post.genre %></span>
                   </div>
 
                   <div class="field">
@@ -208,7 +210,6 @@
 
                   <div class="posts-show-like">
                     <a href="/posts/<%= post.id %>/likes" class="number-likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
-
                     <div class="posts-show-like-icon">
                       <div id="likes_buttons_<%= post.id %>">
                          <%= render partial: 'likes/like', locals: { post: post } %>
@@ -218,8 +219,8 @@
                         <i class="fas fa-info-circle icon"></i>
                       <% end %>
                     </div>
-
                   </div>
+
                 </div>
               </div>
             </div>
@@ -227,7 +228,10 @@
         </div>
       </div>
     </div>
-    <%= paginate @posts %>
+    <div class="pagenation">
+      <%= paginate @posts %>
+    </div>
+
   </div>
 </div>
 

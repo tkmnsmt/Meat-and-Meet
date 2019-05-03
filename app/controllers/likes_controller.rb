@@ -3,7 +3,7 @@ class LikesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    @likes = Post.find(params[:post_id]).liked_users.order("id DESC")
+    @likes = Post.find(params[:post_id]).liked_users.order("id DESC").page(params[:page]).per(10)
   end
 
   def liked_posts

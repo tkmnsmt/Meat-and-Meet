@@ -1,0 +1,115 @@
+.posts-show {
+  background-color: rgba(222, 75, 75, 0.2);
+  .edit-field {
+    #post_img {
+      margin-bottom: 10px;
+    }
+    #image_prev {
+      width: 400px;
+      margin-bottom: 10px;
+    }
+    .form {
+      width: 80%;
+    }
+    .form-control {
+      height: 150px;
+    }
+  }
+  .post-field {
+    background-color: white;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 3px solid rgba(222, 75, 75, 1);
+    .post-time {
+      margin-bottom: 5px;
+    }
+    .my-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid rgb(222, 75, 75);
+      .user-name-image {
+        .user-icon {
+          text-decoration: none;
+        }
+        .icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .user {
+          color: black;
+          font-size: 20px;
+          font-weight: bold;
+          // text-decoration: none;
+          border-bottom: 1px solid black;
+        }
+        .user:hover {
+          color: rgb(222, 75, 75);
+          border-bottom: 1px solid rgb(222, 75, 75);
+        }
+      }
+    }
+    .post-block {
+      padding: 0 50px;
+      .field {
+        .meat-image {
+          width: 500px;
+        }
+        .meat-image {
+          padding-bottom: 40px;
+        }
+      }
+      .first-block {
+        padding-right: 100px;
+        .restaurant-field {
+          padding-bottom: 20px;
+          .restaurant-name {
+            color: rgb(222, 75, 75);
+            font-size: 25px;
+            margin-left: 20px;
+          }
+        }
+      }
+      .second-block {
+        .field {
+          padding-bottom: 20px;
+          .title {
+            font-size: 18px;
+          }
+        }
+        #map {
+          height: 500px;
+          margin-bottom: 40px;
+        }
+        .posts-like {
+          padding-top: 20px;
+          .number-likes {
+            color: black;
+            border-bottom: 1px solid black;
+          }
+          .number-likes:hover {
+            color: rgb(222, 75, 75);
+            border-bottom: 1px solid rgb(222, 75, 75);
+          }
+          .posts-like-icon {
+            padding-top: 10px;
+            .icon-link {
+              text-decoration: none;
+            }
+            .icon {
+              color: rgb(222, 75, 75);
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
