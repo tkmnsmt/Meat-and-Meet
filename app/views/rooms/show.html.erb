@@ -14,45 +14,14 @@
               <% end %>
             <% end %>
           </div>
-          <div class="message-block">
-            <% if @messages.present? %>
-              <% @messages.each do |m| %>
-                <% if user_signed_in? && current_user.id == m.user_id %>
-                  <div class="my-messages">
-                    <div class="my-message-block">
-                      <span class="my-message"><%= m.content %></span><br>
-                      <span class="send-time"><%= m.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-                    </div>
-                    <%= link_to user_path(m.user_id), class: "icon-link" do %>
-                      <%= image_tag m.user.image.to_s, class: "icon" %>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <div class="your-messages">
-                    <%= link_to user_path(m.user_id), class: "icon-link" do %>
-                      <%= image_tag m.user.image.to_s, class: "icon" %>
-                    <% end %>
-                    <div class="your-message-block">
-                      <span class="your-message"><%= m.content %></span><br>
-                      <span class="send-time"><%= m.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-            <% else %>
-              <h3 class="text-center">メッセージはまだありません</h3>
-            <% end %>
+          <div id="message-block-js">
+            <%= render partial: 'chat', locals: { messages: @messages } %>
           </div>
-
-
           <div class="message-submit-field">
-            <%= form_for @message do |f| %>
-              <%= f.text_field :content, class: "message-submit-block form-control", :placeholder => "メッセージを入力して下さい" %>
-              <%= f.hidden_field :room_id, :value => @room.id %>
-              <%= button_tag type: 'submit', class: "btn btn-danger" do %>
-                <i class="far fa-paper-plane"></i>
-              <% end %>
-            <% end %>
+            <div id="sends_buttons">
+              <%= render partial: 'send', locals: { message: @message } %>
+            </div>
+
           </div>
         </div>
       </div>
@@ -62,3 +31,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(function(){
+    $("#message-block-js").animate({ scrollTop: $("#message-block-js")[0].scrollHeight}, "slow");
+    $("#message_btn").click(function(){
+      $("#message-block-js").animate({ scrollTop: $("#message-block-js")[0].scrollHeight}, "slow");
+    })
+  });
+</script>

@@ -132,8 +132,8 @@
                     <%= fields_for @entry do |e| %>
                       <%= e.hidden_field :user_id, :value=> @user.id %>
                     <% end %>
-                    <%= f.submit do %>
-                      <span><i class="far fa-comment btn btn-danger"></i></span>
+                    <%= button_tag type: "submit", class: "btn btn-danger" do %>
+                      <span><i class="far fa-comment"></i></span>
                     <% end %>
                   <% end %>
                 <% end %>

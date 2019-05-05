@@ -1,0 +1,2 @@
+$('#message-block-js').html("<%= j(render partial: 'rooms/chat', locals: {messages: @messages}) %>");
+$('#sends_buttons').html("<%= j(render partial: 'rooms/send', locals: {message: @message}) %>");

@@ -2,7 +2,9 @@
   color: white;
   background: image-url("/top.png");
   background-size: cover;
+  background-attachment: fixed;
   padding-top: 200px;
+  // padding-bottom: 100px;
   // padding-bottom: 150px;
   height: 95vh;
   .sign-up-block {

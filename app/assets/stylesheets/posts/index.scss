@@ -50,7 +50,7 @@
   //   //タテヨコ比を変えないままトリミング
   // }
   .index-field {
-    background-color: rgba(222, 75, 75, 0.2);
+    background-color: rgba(222, 75, 75, 0.1);
     .post-field {
       background-color: white;
       width: 100%;
@@ -58,7 +58,7 @@
       margin-bottom: 20px;
       padding: 30px;
       border-radius: 20px;
-      border: 3px solid rgba(222, 75, 75, 1);
+      // border: 3px solid rgba(222, 75, 75, 1);
       .post-time {
         margin-bottom: 5px;
       }

@@ -1,5 +1,5 @@
 .users-show {
-  background-color: rgba(222, 75, 75, 0.2);
+  background-color: rgba(222, 75, 75, 0.1);
   padding-top: 100px;
   .new-field {
     #post_img {
@@ -23,10 +23,10 @@
     margin-bottom: 50px;
     padding: 30px;
     border-radius: 20px;
-    border: 3px solid rgba(222, 75, 75, 1);
+    border: 2px solid rgba(222, 75, 75, 1);
     .profile-top {
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
       .page {
         margin-bottom: 20px;
       }
@@ -54,7 +54,7 @@
     margin-bottom: 20px;
     padding: 30px;
     border-radius: 20px;
-    border: 3px solid rgba(222, 75, 75, 1);
+    // border: 3px solid rgba(222, 75, 75, 1);
     .post-time {
       margin-bottom: 20px;
       border-bottom: 1px solid rgb(222, 75, 75);
