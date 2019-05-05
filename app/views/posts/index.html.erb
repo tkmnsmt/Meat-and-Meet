@@ -215,9 +215,8 @@
                          <%= render partial: 'likes/like', locals: { post: post } %>
                       </div>
 
-                      <%= link_to post_path(post.id) do %>
-                        <i class="fas fa-info-circle icon"></i>
-                      <% end %>
+                      <%= link_to "詳細", post_path(post.id), class: "syosai" %>
+
                     </div>
                   </div>
 
@@ -229,7 +228,7 @@
       </div>
     </div>
     <div class="pagenation">
-      <%= paginate @posts %> 
+      <%= paginate @posts %>
     </div>
 
   </div>

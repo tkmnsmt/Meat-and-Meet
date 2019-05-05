@@ -132,7 +132,7 @@
                     <%= fields_for @entry do |e| %>
                       <%= e.hidden_field :user_id, :value=> @user.id %>
                     <% end %>
-                    <%= button_tag type: "submit", class: "btn btn-danger" do %>
+                    <%= button_tag type: "submit", class: "btn btn-danger submit-btn" do %>
                       <span><i class="far fa-comment"></i></span>
                     <% end %>
                   <% end %>
@@ -244,9 +244,7 @@
                          <%= render partial: 'likes/like', locals: { post: post } %>
                       </div>
 
-                      <%= link_to post_path(post.id) do %>
-                        <i class="fas fa-info-circle icon"></i>
-                      <% end %>
+                      <%= link_to "詳細", post_path(post.id), class: "syosai" %>
                     </div>
                   </div>
                 </div>

@@ -27,7 +27,7 @@
       h1 {
         font-family: 'Francois One', sans-serif;
         font-size: 85px;
-        background-color: rgba(222, 75, 75, 0.85);
+        background-color: rgba(221, 53, 69, 0.8);
         margin-bottom: 0;
         padding-top: 50px;
         padding-bottom: 10px;
@@ -35,7 +35,7 @@
       p {
         font-size: 22px;
         margin-bottom: 50px;
-        background-color: rgba(222, 75, 75, 0.85);
+        background-color: rgba(221, 53, 69, 0.8);
         padding-bottom: 50px;
       }
     }
@@ -50,7 +50,7 @@
   //   //タテヨコ比を変えないままトリミング
   // }
   .index-field {
-    background-color: rgba(222, 75, 75, 0.1);
+    background-color: rgba(221, 53, 69, 0.1);
     .post-field {
       background-color: white;
       width: 100%;
@@ -58,14 +58,14 @@
       margin-bottom: 20px;
       padding: 30px;
       border-radius: 20px;
-      // border: 3px solid rgba(222, 75, 75, 1);
+      // border: 3px solid rgba(221, 53, 69, 1);
       .post-time {
         margin-bottom: 5px;
       }
       .my-block {
         padding-bottom: 10px;
         margin-bottom: 20px;
-        border-bottom: 2px solid rgb(222, 75, 75);
+        border-bottom: 2px solid rgba(221, 53, 69, 1);
         .user-icon {
           text-decoration: none;
         }
@@ -83,8 +83,8 @@
           border-bottom: 1px solid black;
         }
         .user:hover {
-          color: rgb(222, 75, 75);
-          border-bottom: 1px solid rgb(222, 75, 75);
+          color: rgba(221, 53, 69, 1);
+          border-bottom: 1px solid rgba(221, 53, 69, 1);
         }
       }
       .post-block {
@@ -101,7 +101,7 @@
           .restaurant-field {
             padding-bottom: 20px;
             .restaurant-name {
-              color: rgb(222, 75, 75);
+              color: rgba(221, 53, 69, 1);
               font-size: 25px;
               font-weight: bold;
               padding-left: 16px;
@@ -130,8 +130,8 @@
               // font-size: 18px;
             }
             .number-likes:hover {
-              color: rgb(222, 75, 75);
-              border-bottom: 1px solid rgb(222, 75, 75);
+              color: rgba(221, 53, 69, 1);
+              border-bottom: 1px solid rgba(221, 53, 69, 1);
             }
             .posts-show-like-icon {
               display: flex;
@@ -141,11 +141,11 @@
                 text-decoration: none;
               }
               .icon {
-                color: rgb(222, 75, 75);
+                color: rgba(221, 53, 69, 1);
                 font-size: 20px;
               }
               // .icon:hover {
-              //   color: rgb(222, 75, 75);
+              //   color: rgba(221, 53, 69, 1);
               // }
               .likes-count {
                 padding-right: 20px;

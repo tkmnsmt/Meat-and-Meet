@@ -1,5 +1,5 @@
 .users-show {
-  background-color: rgba(222, 75, 75, 0.1);
+  background-color: rgba(221, 53, 69, 0.1);
   padding-top: 100px;
   .new-field {
     #post_img {
@@ -23,10 +23,10 @@
     margin-bottom: 50px;
     padding: 30px;
     border-radius: 20px;
-    border: 2px solid rgba(222, 75, 75, 1);
+    border: 2px solid rgba(221, 53, 69, 1);
     .profile-top {
       display: flex;
-      // justify-content: space-between;
+      justify-content: space-between;
       .page {
         margin-bottom: 20px;
       }
@@ -34,6 +34,9 @@
         height: 100%;
         i {
           font-size: 20px;
+        }
+        .submit-btn {
+          display: inline;
         }
       }
     }
@@ -54,10 +57,10 @@
     margin-bottom: 20px;
     padding: 30px;
     border-radius: 20px;
-    // border: 3px solid rgba(222, 75, 75, 1);
+    // border: 3px solid rgba(221, 53, 69, 1);
     .post-time {
       margin-bottom: 20px;
-      border-bottom: 1px solid rgb(222, 75, 75);
+      border-bottom: 1px solid rgba(221, 53, 69, 1);
     }
     .post-block {
       display: flex;
@@ -73,7 +76,7 @@
         .restaurant-field {
           padding-bottom: 20px;
           .restaurant-name {
-            color: rgb(222, 75, 75);
+            color: rgba(221, 53, 69, 1);
             font-size: 25px;
             margin-left: 20px;
           }
@@ -95,8 +98,8 @@
             // font-size: 18px;
           }
           .number-likes:hover {
-            color: rgb(222, 75, 75);
-            border-bottom: 1px solid rgb(222, 75, 75);
+            color: rgba(221, 53, 69, 1);
+            border-bottom: 1px solid rgba(221, 53, 69, 1);
           }
           .posts-show-like-icon {
             display: flex;
@@ -106,11 +109,11 @@
               text-decoration: none;
             }
             .icon {
-              color: rgb(222, 75, 75);
+              color: rgba(221, 53, 69, 1);
               font-size: 20px;
             }
             // .icon:hover {
-            //   color: rgb(222, 75, 75);
+            //   color: rgba(221, 53, 69, 1);
             // }
             .likes-count {
               padding-right: 20px;

@@ -1,13 +1,13 @@
 .rooms-show {
   padding-top: 50px;
-  background-color: rgba(222, 75, 75, 0.1);
+  background-color: rgba(221, 53, 69, 0.1);
   .messages-field {
     background-color: #7494c0;
     // margin-top: 30px;
     padding-bottom: 20px;
     margin: 20px;
     border-radius: 20px;
-    // border: 2px solid rgba(222, 75, 75, 1);
+    // border: 2px solid rgba(221, 53, 69, 1);
     .your-name-block {
       .message-user {
         text-align: center;
@@ -23,6 +23,7 @@
     }
     #message-block-js{
       overflow: scroll;
+      overflow-x: hidden;
       height: 70vh;
     }
     .message-block {
@@ -34,7 +35,7 @@
         margin-bottom: 15px;
         .my-message-block {
           // border: 2px solid black;
-          background-color: rgba(222, 75, 75, 1);
+          background-color: rgba(221, 53, 69, 1);
           padding: 10px;
           border-radius: 20px;
           max-width: 60%;

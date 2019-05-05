@@ -1,7 +1,7 @@
 .likes-liked_posts {
   .index-field {
     padding-top: 100px;
-    background-color: rgba(222, 75, 75, 0.1);
+    background-color: rgba(221, 53, 69, 0.1);
     h2 {
       margin: 0 auto;
     }
@@ -12,14 +12,14 @@
       margin-bottom: 20px;
       padding: 30px;
       border-radius: 20px;
-      // border: 3px solid rgba(222, 75, 75, 1);
+      // border: 3px solid rgba(221, 53, 69, 1);
       .post-time {
         margin-bottom: 5px;
       }
       .my-block {
         padding-bottom: 5px;
         margin-bottom: 20px;
-        border-bottom: 2px solid rgb(222, 75, 75);
+        border-bottom: 2px solid rgba(221, 53, 69, 1);
         .user-icon {
           text-decoration: none;
         }
@@ -37,8 +37,8 @@
           border-bottom: 1px solid black;
         }
         .user:hover {
-          color: rgb(222, 75, 75);
-          border-bottom: 1px solid rgb(222, 75, 75);
+          color: rgba(221, 53, 69, 1);
+          border-bottom: 1px solid rgba(221, 53, 69, 1);
         }
       }
       .post-block {
@@ -55,7 +55,7 @@
           .restaurant-field {
             padding-bottom: 20px;
             .restaurant-name {
-              color: rgb(222, 75, 75);
+              color: rgba(221, 53, 69, 1);
               font-size: 25px;
               font-weight: bold;
               padding-left: 16px;
@@ -81,8 +81,8 @@
               // font-size: 18px;
             }
             .number-likes:hover {
-              color: rgb(222, 75, 75);
-              border-bottom: 1px solid rgb(222, 75, 75);
+              color: rgba(221, 53, 69, 1);
+              border-bottom: 1px solid rgba(221, 53, 69, 1);
             }
             .posts-show-like-icon {
               display: flex;
@@ -92,11 +92,11 @@
                 text-decoration: none;
               }
               .icon {
-                color: rgb(222, 75, 75);
+                color: rgba(221, 53, 69, 1);
                 font-size: 20px;
               }
               // .icon:hover {
-              //   color: rgb(222, 75, 75);
+              //   color: rgba(221, 53, 69, 1);
               // }
               .likes-count {
                 padding-right: 20px;

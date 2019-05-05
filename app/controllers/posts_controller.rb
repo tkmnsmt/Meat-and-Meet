@@ -6,9 +6,9 @@ class PostsController < ApplicationController
     @posts = Post.all.order("id DESC").page(params[:page]).per(5)
     @post = Post.new
     @like = Like.new
-    # if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
-    #   redirect_to profile_edit_path
-    # end
+    if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
+      redirect_to profile_edit_path
+    end
   end
 
   def show
