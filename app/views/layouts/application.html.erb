@@ -16,7 +16,7 @@
       <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <% if controller.controller_name == "registrations" && controller.action_name == "profile_edit" %>
-            <span class="navbar-brand">Meat and Meet</span>
+            <span class="navbar-brand bottom_btn">Meat and Meet</span>
           <% else %>
             <a class="navbar-brand border_bottom_btn" href="/">Meat and Meet</a>
           <% end %>
@@ -25,21 +25,23 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-              <% if current_user.persisted? && current_user.image? %>
-                <li class="nav-item user-info">
-                  <a class="nav-link user-icon" href="/users/<%= current_user.id %>"><%= image_tag current_user.image.to_s, class: "icon" %></a>
-                  <a class="nav-link border_slide_btn user-name" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <a class="nav-link user-icon" href="/users/<%= current_user.id %>"><%= image_tag '/no_image.png', class: "icon" %></a>
-                  <a class="nav-link border_slide_btn user-name" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
-                </li>
-              <% end %>
               <% if controller.controller_name == "posts" && controller.action_name == "index" %>
                 <li class="nav-item">
                   <span class="nav-link modal-new border-nav border_slide_btn" data-toggle="modal" data-target="#exampleModal">投稿</span>
                 </li>
+              <% end %>
+              <% unless controller.controller_name == "registrations" && controller.action_name == "profile_edit" %>
+                <% if current_user.persisted? && current_user.image? %>
+                  <li class="nav-item user-info">
+                    <a class="nav-link user-icon" href="/users/<%= current_user.id %>"><%= image_tag current_user.image.to_s, class: "icon" %></a>
+                    <a class="nav-link border_slide_btn user-name" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+                  </li>
+                <% else %>
+                  <li class="nav-item user-info">
+                    <a class="nav-link user-icon" href="/users/<%= current_user.id %>"><%= image_tag '/no_image.png', class: "icon" %></a>
+                    <a class="nav-link border_slide_btn user-name" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+                  </li>
+                <% end %>
               <% end %>
               <li class="nav-item">
                 <a><span><%= link_to "ログアウト", destroy_user_session_path, class: "nav-link border-nav border_slide_btn", method: :delete, data: {confirm: "本当にログアウトしますか？"} %></span></a>

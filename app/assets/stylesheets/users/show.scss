@@ -31,12 +31,19 @@
         margin-bottom: 20px;
       }
       .profile-icons {
+        display: flex;
         height: 100%;
         i {
+          // display: flex;
+          height: 100%;
           font-size: 20px;
+          margin: 0 5px 0 0;
         }
-        .submit-btn {
-          display: inline;
+        .like-dm {
+          display: flex;
+          .submit-btn {
+            margin: 0;
+          }
         }
       }
     }

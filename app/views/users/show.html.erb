@@ -115,29 +115,32 @@
             <div class="profile-icons">
 
               <% if user_signed_in? && current_user.id.to_s == params[:id] %>
-                <%= link_to profile_edit_path, class: "btn btn-danger" do %>
-                  <span><i class="fas fa-user-edit"></i></span>
+                <%= link_to profile_edit_path do %>
+                  <span><i class="fas fa-user-edit btn btn-danger"></i></span>
                 <% end %>
               <% end %>
 
-              <span><a href="/likes/liked_posts/<%= @user.id %>"><i class="far fa-heart btn btn-danger"></i></a></span>
+              <div class="like-dm">
+                <span><a href="/likes/liked_posts/<%= @user.id %>"><i class="far fa-heart btn btn-danger"></i></a></span>
 
-              <% if @user.id == current_user.id %>
-                <span><a href="/rooms"><i class="far fa-envelope btn btn-danger"></i></a></span>
-              <% else %>
-                <% if @isRoom == true %>
-                  <span><a href="/rooms/<%= @roomId %>"><i class="far fa-comment btn btn-danger"></i></a></span>
+                <% if @user.id == current_user.id %>
+                  <span><a href="/rooms"><i class="far fa-envelope btn btn-danger"></i></a></span>
                 <% else %>
-                  <%= form_for @room do |f| %>
-                    <%= fields_for @entry do |e| %>
-                      <%= e.hidden_field :user_id, :value=> @user.id %>
-                    <% end %>
-                    <%= button_tag type: "submit", class: "btn btn-danger submit-btn" do %>
-                      <span><i class="far fa-comment"></i></span>
+                  <% if @isRoom == true %>
+                    <span><a href="/rooms/<%= @roomId %>"><i class="far fa-comment btn btn-danger"></i></a></span>
+                  <% else %>
+                    <%= form_for @room do |f| %>
+                      <%= fields_for @entry do |e| %>
+                        <%= e.hidden_field :user_id, :value=> @user.id %>
+                      <% end %>
+                      <%= button_tag type: "submit", class: "btn btn-danger" do %>
+                        <span><i class="far fa-comment submit-btn"></i></span>
+                      <% end %>
                     <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
+              </div>
+
             </div>
 
           </div>
