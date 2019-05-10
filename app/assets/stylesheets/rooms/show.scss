@@ -2,7 +2,7 @@
   padding-top: 50px;
   background-color: rgba(221, 53, 69, 0.1);
   .messages-field {
-    background-color: #7494c0;
+    background-color: rgba(221, 53, 69, 0.3);
     // margin-top: 30px;
     padding-bottom: 20px;
     margin: 20px;
@@ -18,6 +18,9 @@
         a {
           color: white;
           text-decoration: none;
+        }
+        a:hover {
+          color: rgba(221, 53, 69, 1);
         }
       }
     }
@@ -35,7 +38,7 @@
         margin-bottom: 15px;
         .my-message-block {
           // border: 2px solid black;
-          background-color: rgba(221, 53, 69, 1);
+          background-color: rgba(221, 53, 69, 0.9);
           padding: 10px;
           border-radius: 20px;
           max-width: 60%;

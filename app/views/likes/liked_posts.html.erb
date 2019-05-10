@@ -106,7 +106,7 @@
                     <a href="/posts/<%= post.id %>/likes" class="number-likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
                     <div class="posts-show-like-icon">
                       <div id="likes_buttons_<%= post.id %>">
-                         <%= render partial: 'likes/like', locals: { post: post } %>
+                        <%= render partial: 'likes/like', locals: { post: post } %>
                       </div>
 
                       <%= link_to "詳細", post_path(post.id), class: "syosai" %>

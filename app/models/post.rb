@@ -5,8 +5,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user, dependent: :destroy
-
-
+  # validates :reputation, length: { maximum: 10 }
   validates :image, :url, :address, :restaurant_name, :taste, :cost_performance, :service, :atmosphere, :reputation, :genre, :average, presence: true
 
   def average
