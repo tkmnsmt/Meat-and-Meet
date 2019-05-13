@@ -27,6 +27,12 @@
             <ul class="navbar-nav">
               <% if controller.controller_name == "posts" && controller.action_name == "index" %>
                 <li class="nav-item">
+                  <%= form_tag(controller:"posts", action:"index") do %>
+                    <%= text_field_tag :search, "", placeholder: "お店の名前を入力" %>
+                    <%= submit_tag '検索', class: "search-btn btn-3" %>
+                  <% end %>
+                </li>
+                <li class="nav-item">
                   <span class="nav-link modal-new border-nav border_slide_btn" data-toggle="modal" data-target="#exampleModal">投稿</span>
                 </li>
               <% end %>
@@ -59,6 +65,14 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
+              <li class="nav-item">
+                <% if controller.controller_name == "posts" && controller.action_name == "index" %>
+                  <%= form_tag(controller:"posts", action:"index") do %>
+                    <%= text_field_tag :search, "", placeholder: "お店の名前を入力" %>
+                    <%= submit_tag '検索', class: "search-btn btn-3" %>
+                  <% end %>
+                <% end %>
+              </li>
               <li class="nav-item">
                 <a class="nav-link border-nav border_slide_btn" href="<%= new_user_session_path %>">投稿</a>
               </li>

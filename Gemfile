@@ -84,6 +84,8 @@ gem 'omniauth-twitter'
 
 gem 'http'
 
+gem 'dotenv-rails'
+
 group :production do
   gem 'pg'
 end

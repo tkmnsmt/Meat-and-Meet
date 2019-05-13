@@ -344,7 +344,10 @@
     })
 
   </script>
+
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCzCKcmeaX7BJD2w73W5BZT3Mk_twwfX_M&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLEMAP_API_ID']%>&callback=initMap">
+
   </script>
+
 </div>

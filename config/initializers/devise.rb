@@ -3,8 +3,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :facebook, '270320677186785', 'b1c01c326b5febfbe37b1add35e9727c'
-  config.omniauth :twitter, '53770eo9EbK45jpP4BumoAgL7', 'fcHTWgOu9Vhq81M6gntWoC63b8Xityj0tSze6j2Hzft0pZfAVC', callback_url:"http://localhost:3000/users/auth/twitter/callback"
+  config.omniauth :facebook, 'ENV["FACEBOOK_ACCESS_KEY_ID"]', 'ENV["FACEBOOK_SECRET_ACCESS_KEY"]'
+  config.omniauth :twitter, 'ENV["TWITTER_ACCESS_KEY_ID"]', 'ENV["TWITTER_SECRET_ACCESS_KEY"]'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -298,4 +298,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
 end
