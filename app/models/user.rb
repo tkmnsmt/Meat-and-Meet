@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+          :recoverable, :rememberable, :validatable, :omniauthable
   has_many :posts, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
@@ -18,6 +18,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   validates :introduce, length: { maximum: 255 }
+  validates :name, length: { maximum: 10 }
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 // @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&subset=cyrillic,cyrillic-ext,latin-ext';
@@ -23,7 +24,7 @@ body {
   font-family: 'Kosugi', sans-serif;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 681px) {
   header {
     font-family: 'Francois One', 'Kosugi', sans-serif;
     .navbar {
@@ -186,12 +187,12 @@ body {
 
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 680px) {
   header {
     font-family: 'Francois One', 'Kosugi', sans-serif;
     .navbar {
       position: fixed;
-      height: 8vh;
+      // height: 8vh;
       width: 100%;
       z-index: 100;
       background-color: #dc3545 !important;
@@ -229,17 +230,17 @@ body {
         font-size: 30px;
         padding: 0px !important;
         letter-spacing: -1px;
-      position: relative;
-      display: inline-block;
-      color: #fff !important;
-      text-decoration: none;
+        position: relative;
+        display: inline-block;
+        color: #fff !important;
+        text-decoration: none;
       }
       .navbar-collapse {
-        display: flex;
-        justify-content: flex-end;
+        // display: flex;
+        // justify-content: flex-end;
         .navbar-nav {
-          display: flex;
-          align-items: center;
+          // display: flex;
+          // align-items: center;
           .search-btn {
             color: white;
             font-size: 17px;

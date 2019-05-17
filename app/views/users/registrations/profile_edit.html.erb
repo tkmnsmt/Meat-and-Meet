@@ -1,13 +1,13 @@
 <div class="users-registrations-profile_edit">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="profile-block">
           <%= form_for current_user, url: {action: 'profile_update'} do |f| %>
 
             <div class="field">
-              <%= f.label :name, "名前" %><br />
-              <%= f.text_field :name, autofocus: true, class: "form name-field" %>
+              <%= f.label :name, "名前（10文字以内）" %><br />
+              <%= f.text_field :name, autofocus: true, :maxlength => "10", class: "form name-field" %>
             </div>
 
             <div class="circle-image">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="field">
-              <%= f.label :introduce, "自己紹介（お肉への熱い想い）" %>
+              <%= f.label :introduce, "自己紹介・お肉への熱い想い（255文字以内）" %>
               <%= f.text_area :introduce, :maxlength => "255", class: "form form-control"  %>
             </div>
 
