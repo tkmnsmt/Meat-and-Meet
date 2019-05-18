@@ -1,20 +1,11 @@
 .users-show {
   background-color: rgba(221, 53, 69, 0.1);
   padding-top: 100px;
-  .new-field {
-    #post_img {
-      margin-bottom: 10px;
-    }
-    #image_prev {
-      width: 400px;
-      margin-bottom: 10px;
-    }
-    .form {
-      width: 80%;
-    }
-    .form-control {
-      height: 150px;
-    }
+  .user-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
   }
   .profile {
     background-color: white;
@@ -86,6 +77,8 @@
             color: rgba(221, 53, 69, 1);
             font-size: 25px;
             margin-left: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(221, 53, 69, 1);
           }
         }
       }

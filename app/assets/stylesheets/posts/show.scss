@@ -67,13 +67,15 @@
         }
       }
       .first-block {
-        padding-right: 100px;
+        // padding-right: 100px;
         .restaurant-field {
           padding-bottom: 20px;
           .restaurant-name {
             color: rgba(221, 53, 69, 1);
             font-size: 25px;
             margin-left: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(221, 53, 69, 1);
           }
         }
       }

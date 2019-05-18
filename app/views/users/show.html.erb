@@ -7,88 +7,42 @@
 
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">投稿</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="new-field">
-            <%= form_for @post do |p| %>
-              <div class="field">
-                <%= p.label :"お店の名前" %>
-                <%= p.text_field :restaurant_name %>
-              </div>
-              <!-- <div class="field">
-                <%= p.label "写真" %>
-                <%= p.file_field :image %>
-              </div> -->
-
-              <%= p.file_field :image, id: 'post_img' %>
-              <%#= f.label :image, "プロフィール画像" %>
-              <!-- <img id="image_prev" src="/no_image.png" class='hidden' /> -->
-              <%# if current_user.persisted? && current_user.image? %>
-                <%#= image_tag current_user.image.to_s, id: "image_prev", class: 'hidden' %>
-
-              <%# else %>
-                <%= image_tag '', class: 'hidden', id: "image_prev" %>
-                <%= p.hidden_field :image_cache %>
-              <%# end %>
 
 
-              <div class="field">
-                <%= p.label "リンク" %>
-                <%= p.text_field :url, class: "form" %>
-              </div>
-              <div class="field">
-                <%= p.label "住所" %>
-                <%= p.text_field :address, class: "form" %>
-              </div>
-              <div class="field">
-                <%= p.label "ジャンル" %>
-                <%= p.select :genre, [["ステーキ","ステーキ"],["焼き肉","焼き肉"],["その他","その他"]] %>
-              </div>
-              <div class="field">
-                <%= p.label "味" %>
-                <span id="taste-star"></span>
-                <%= p.hidden_field :taste, id: "post-taste-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "コストパフォーマンス" %>
-                <span id="cost_performance-star"></span>
-                <%= p.hidden_field :cost_performance, id: "post-cost_performance-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "雰囲気" %>
-                <span id="atmosphere-star"></span>
-                <%= p.hidden_field :atmosphere, id: "post-atmosphere-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "サービス" %>
-                <span id="service-star"></span>
-                <%= p.hidden_field :service, id: "post-service-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "口コミ" %>
-                <%= p.text_area :reputation, :maxlength => "255", class: "form-control" %>
-              </div>
-
-              <div class="modal-footer">
-                <%= p.submit "投稿する", class: "btn btn-danger" %>
-              </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%# <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5> %>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+            <% if current_user.persisted? && current_user.image? %>
+              <% if @user.image? %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "user-icon" %></a>
+              <% else %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "user-icon" %></a>
+              <% end %>
+            <% else %>
+              <% if @user.image? %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "user-icon" %></a>
+              <% else %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "user-icon" %></a>
+              <% end %>
             <% end %>
           </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">閉じる</button>
+        <%# <button type="button" class="btn btn-primary">Save changes</button> %>
       </div>
     </div>
   </div>
-
-
+</div>
 
 
 
@@ -108,7 +62,7 @@
               <% if user_signed_in? && current_user.id.to_s == params[:id] %>
                 <h2>マイページ</h2>
               <% else %>
-                <h2><%= @user.name %>さんのページ</h2>
+                <h2><%= @user.name %></h2>
               <% end %>
             </div>
 
@@ -156,15 +110,15 @@
           <div class="field">
             <% if current_user.persisted? && current_user.image? %>
               <% if @user.image? %>
-                <%= image_tag @user.image.to_s, class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "icon" %></a>
               <% else %>
-                <%= image_tag '/no_image.png', class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "icon" %></a>
               <% end %>
             <% else %>
               <% if @user.image? %>
-                <%= image_tag @user.image.to_s, class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "icon" %></a>
               <% else %>
-                <%= image_tag '/no_image.png', class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "icon" %></a>
               <% end %>
             <% end %>
           </div>
