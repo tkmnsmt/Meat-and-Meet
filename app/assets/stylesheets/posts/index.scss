@@ -21,7 +21,6 @@
     .top-block {
       h1 {
         font-family: 'Francois One', sans-serif;
-        font-size: 85px;
         background-color: rgba(221, 53, 69, 0.8);
         margin-bottom: 0;
         padding-top: 7vh;
@@ -29,7 +28,6 @@
         text-shadow: 5px 5px 1px rgba( 0, 0, 0, .7 );
       }
       p {
-        font-size: 22px;
         margin-bottom: 50px;
         background-color: rgba(221, 53, 69, 0.8);
         padding-bottom: 8vh;
@@ -157,6 +155,12 @@
         color: white;
         padding-top: 35vh;
         text-align: center;
+        h1 {
+        font-size: 85px;
+        }
+        p {
+        font-size: 22px;
+        }
       }
     }
     .index-field {
@@ -187,12 +191,18 @@
 @media screen and (max-width: 680px){
   .posts-index {
     .top-image {
-      height: 70vh;
+      height: 50vh;
       .top-block {
         width: 100%;
         color: white;
         padding-top: 15vh;
         text-align: center;
+        h1 {
+          font-size: 55px;
+          }
+          p {
+          font-size: 13px;
+          }
       }
     }
     .index-field {
