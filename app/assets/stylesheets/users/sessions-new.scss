@@ -2,7 +2,6 @@
   color: white;
   background: image-url("/top.png");
   background-size: cover;
-  padding-top: 200px;
   height: 95vh;
   .login-block {
     .login {
@@ -32,11 +31,15 @@
 
 
 
-@media screen and (min-widht: 681px) {
-
+@media screen and (min-width: 681px) {
+  .users-sessions-new {
+  padding-top: 200px;
+  }
 }
 
 
-@media screen and (max-widht: 680px) {
-  
+@media screen and (max-width: 680px) {
+  .users-sessions-new {
+    padding-top: 100px;
+  }
 }

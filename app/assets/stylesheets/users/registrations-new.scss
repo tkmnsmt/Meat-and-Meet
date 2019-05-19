@@ -3,7 +3,6 @@
   background: image-url("/top.png");
   background-size: cover;
   background-attachment: fixed;
-  padding-top: 200px;
   padding-bottom: 200px;
   .sign-up-block {
     .sign-up {
@@ -28,5 +27,17 @@
         margin-bottom: 5px;
       }
     }
+  }
+}
+
+@media screen and (min-width: 681px) {
+  .users-registrations-new {
+  padding-top: 200px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .users-registrations-new {
+    padding-top: 100px;
   }
 }
