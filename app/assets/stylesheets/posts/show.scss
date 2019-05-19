@@ -5,7 +5,7 @@
       margin-bottom: 10px;
     }
     #image_prev {
-      width: 400px;
+      width: 100%;
       margin-bottom: 10px;
     }
     .form {
@@ -20,7 +20,6 @@
     width: 100%;
     margin-top: 100px;
     margin-bottom: 50px;
-    padding: 30px;
     border-radius: 20px;
     // border: 3px solid rgba(221, 53, 69, 1);
     .post-time {
@@ -57,17 +56,12 @@
       }
     }
     .post-block {
-      padding: 0 50px;
       .field {
-        .meat-image {
-          width: 500px;
-        }
         .meat-image {
           padding-bottom: 40px;
         }
       }
       .first-block {
-        // padding-right: 100px;
         .restaurant-field {
           padding-bottom: 20px;
           .restaurant-name {
@@ -85,10 +79,6 @@
           .title {
             font-size: 18px;
           }
-        }
-        #map {
-          height: 500px;
-          margin-bottom: 40px;
         }
         .posts-like {
           padding-top: 20px;
@@ -112,6 +102,47 @@
           }
         }
       }
+    }
+  }
+}
+
+
+@media screen and (min-width: 681px) {
+  .posts-show {
+    .post-field {
+    padding: 30px;
+      .post-block {
+      padding: 0 50px;
+        .field {
+          .meat-image {
+            width: 50%;
+          }
+        }
+      }
+    }
+    #map {
+      height: 500px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .posts-show {
+    .post-field {
+      padding: 10px;
+      .post-block {
+        padding: 0 10px;
+        .field {
+          .meat-image {
+            width: 100%;
+          }
+        }
+      }
+    }
+    #map {
+      height: 200px;
+      margin-bottom: 40px;
     }
   }
 }

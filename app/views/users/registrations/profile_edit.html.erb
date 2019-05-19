@@ -6,7 +6,7 @@
           <%= form_for current_user, url: {action: 'profile_update'} do |f| %>
 
             <div class="field">
-              <%= f.label :name, "名前（10文字以内）" %><br />
+              <%= f.label :name, "名前（8文字以内）" %><br />
               <%= f.text_field :name, autofocus: true, :maxlength => "10", class: "form name-field" %>
             </div>
 

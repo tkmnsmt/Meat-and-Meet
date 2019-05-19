@@ -10,22 +10,15 @@
   .profile {
     background-color: white;
     width: 100%;
-    // margin-top: 30px;
     margin-bottom: 50px;
     padding: 30px;
     border-radius: 20px;
     border: 2px solid rgba(221, 53, 69, 1);
     .profile-top {
-      display: flex;
-      justify-content: space-between;
-      .page {
-        margin-bottom: 20px;
-      }
       .profile-icons {
         display: flex;
         height: 100%;
         i {
-          // display: flex;
           height: 100%;
           font-size: 20px;
           margin: 0 5px 0 0;
@@ -53,24 +46,21 @@
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 30px;
     border-radius: 20px;
-    // border: 3px solid rgba(221, 53, 69, 1);
     .post-time {
-      margin-bottom: 20px;
+      
       border-bottom: 1px solid rgba(221, 53, 69, 1);
     }
     .post-block {
-      display: flex;
+      
       .field {
         margin-bottom: 10px;
         .meat-image {
-          width: 500px;
+
         }
       }
       .first-block {
-        padding-left: 30px;
-        padding-right: 100px;
+        
         .restaurant-field {
           padding-bottom: 20px;
           .restaurant-name {
@@ -90,12 +80,9 @@
           }
         }
         .posts-show-like {
-          // display: flex;
-          // justify-content: flex-end;
           .number-likes {
             color: black;
             border-bottom: 1px solid black;
-            // font-size: 18px;
           }
           .number-likes:hover {
             color: rgba(221, 53, 69, 1);
@@ -112,13 +99,76 @@
               color: rgba(221, 53, 69, 1);
               font-size: 20px;
             }
-            // .icon:hover {
-            //   color: rgba(221, 53, 69, 1);
-            // }
             .likes-count {
               padding-right: 20px;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 681px) {
+  .users-show {
+    .profile {
+      
+      .profile-top {
+        display: flex;
+        justify-content: space-between;
+        .page {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .post-field {
+      padding: 30px;
+      .post-time { 
+        margin-bottom: 20px;
+      }
+      .post-block {
+        display: flex;
+        .field {
+          .meat-image {
+            width: 500px;
+          }
+        }
+        .first-block {
+          padding-left: 30px;
+          padding-right: 100px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 680px) {
+  .users-show {
+    .profile {
+      
+      .profile-top {
+
+      }
+    }
+    .post-field {
+      padding: 10px;
+      .post-time { 
+        
+      }
+      .post-block {
+        padding: 10px;
+        .field {
+          .meat-image {
+            width: 100%;
+          }
+        }
+        .first-block {
+
         }
       }
     }
