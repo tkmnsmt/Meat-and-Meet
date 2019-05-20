@@ -24,7 +24,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     # binding.pry
     @like = Like.new
-
+    if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
+      redirect_to profile_edit_path
+    end
   end
 
   def new

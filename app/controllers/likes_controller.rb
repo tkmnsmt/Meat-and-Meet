@@ -4,10 +4,18 @@ class LikesController < ApplicationController
 
   def index
     @likes = Post.find(params[:post_id]).liked_users.order("id DESC").page(params[:page]).per(10)
+
+    if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
+      redirect_to profile_edit_path
+    end
   end
 
   def liked_posts
     @likes = User.find(params[:id]).liked_posts.order("id DESC").page(params[:page]).per(5)
+
+    if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
+      redirect_to profile_edit_path
+    end
   end
 
   def create
