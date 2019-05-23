@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   def show
     @post = Post.new
     @posts = Post.where(user_id: params[:id]).order("id DESC").page(params[:page]).per(5)
-
     @user=User.find(params[:id])
+    
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
