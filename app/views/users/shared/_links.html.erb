@@ -10,11 +10,7 @@
 <%
 =end
 %>
-  <div class="sns-login">
-    <%= link_to(content_tag(:i, ' Facebookログイン', class: "fab fa-facebook-square facebook-login"), user_facebook_omniauth_authorize_path) %><br>
-
-    <%= link_to(content_tag(:i, ' Twitterログイン', class: "fab fa-twitter twitter-login"), user_twitter_omniauth_authorize_path) %><br>
-  </div>
+  
 
   <%- if controller_name != 'sessions' %>
     <%= link_to "ログイン", new_session_path(resource_name), class: "links" %><br />

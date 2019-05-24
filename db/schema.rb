@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_112545) do
+ActiveRecord::Schema.define(version: 2019_05_24_112203) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2019_04_26_112545) do
     t.integer "atmosphere"
     t.text "reputation"
     t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reads", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

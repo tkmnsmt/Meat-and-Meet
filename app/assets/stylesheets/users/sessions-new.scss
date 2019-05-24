@@ -9,11 +9,47 @@
       text-align: center;
       padding-bottom: 10px;
     }
+    .sns-login {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      .facebook-login {
+        color: white;
+        width: 100%;
+        background-color: #4267b2;
+        text-decoration: none;
+        padding: 20px 0;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        margin-bottom: 50px;
+      }
+      .facebook-login:hover {
+        background-color: #29487d;
+        transition: .3s;
+      }
+      .twitter-login {
+        width: 100%;
+        color: white;
+        background-color: #1da1f2;
+        text-decoration: none;
+        padding: 20px 0;
+        border-radius: 5px;
+        margin-bottom: 5px;
+      }
+      .twitter-login:hover {
+        background-color: #2786d4;
+        transition: .3s;
+      }
+    }
     .field {
       padding-bottom: 10px;
+      font-size: 13px;
       .form {
         color: white;
-        font-size: 25px;
+        font-size: 20px;
         background: transparent;
         border: transparent;
         border-bottom: 2px solid white;
@@ -22,6 +58,7 @@
     }
     .actions {
       .btn {
+        font-size: 13px;
         margin-top: 5px;
         margin-bottom: 5px;
       }
