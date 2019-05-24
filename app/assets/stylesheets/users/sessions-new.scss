@@ -1,0 +1,47 @@
+.users-sessions-new {
+  color: white;
+  background: image-url("/top.png");
+  background-size: cover;
+  
+  .login-block {
+    .login {
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+    .field {
+      padding-bottom: 10px;
+      .form {
+        color: white;
+        font-size: 25px;
+        background: transparent;
+        border: transparent;
+        border-bottom: 2px solid white;
+        width: 100%;
+      }
+    }
+    .actions {
+      .btn {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (min-width: 681px) {
+  .users-sessions-new {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  }
+}
+
+
+@media screen and (max-width: 680px) {
+  .users-sessions-new {
+    padding-top: 150px;
+    padding-bottom: 100px;
+  }
+}

@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   def show
     @post = Post.new
     @posts = Post.where(user_id: params[:id]).order("id DESC").page(params[:page]).per(5)
-
     @user=User.find(params[:id])
+    
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       end
     end
 
-    if user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
+    if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
       redirect_to profile_edit_path
     end
 

@@ -1,0 +1,175 @@
+.users-show {
+  background-color: rgba(221, 53, 69, 0.1);
+  padding-top: 100px;
+  .user-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .profile {
+    background-color: white;
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid rgba(221, 53, 69, 1);
+    .profile-top {
+      .profile-icons {
+        display: flex;
+        height: 100%;
+        i {
+          height: 100%;
+          font-size: 20px;
+          margin: 0 5px 0 0;
+        }
+        .like-dm {
+          display: flex;
+          .submit-btn {
+            margin: 0;
+          }
+        }
+      }
+    }
+    .field {
+      margin-bottom: 5px;
+    }
+    .icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  .post-field {
+    background-color: white;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    .post-time {
+      
+      border-bottom: 1px solid rgba(221, 53, 69, 1);
+    }
+    .post-block {
+      
+      .field {
+        margin-bottom: 10px;
+        .meat-image {
+
+        }
+      }
+      .first-block {
+        
+        .restaurant-field {
+          padding-bottom: 20px;
+          .restaurant-name {
+            color: rgba(221, 53, 69, 1);
+            font-size: 25px;
+            margin-left: 20px;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(221, 53, 69, 1);
+          }
+        }
+      }
+      .second-block {
+        .field {
+          padding-bottom: 10px;
+          .title {
+            font-size: 18px;
+          }
+        }
+        .posts-show-like {
+          .number-likes {
+            color: black;
+            border-bottom: 1px solid black;
+          }
+          .number-likes:hover {
+            color: rgba(221, 53, 69, 1);
+            border-bottom: 1px solid rgba(221, 53, 69, 1);
+          }
+          .posts-show-like-icon {
+            display: flex;
+            align-items: flex-end;
+            padding-top: 10px;
+            .icon-link {
+              text-decoration: none;
+            }
+            .icon {
+              color: rgba(221, 53, 69, 1);
+              font-size: 20px;
+            }
+            .likes-count {
+              padding-right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 681px) {
+  .users-show {
+    .profile {
+      
+      .profile-top {
+        display: flex;
+        justify-content: space-between;
+        .page {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .post-field {
+      padding: 30px;
+      .post-time { 
+        margin-bottom: 20px;
+      }
+      .post-block {
+        display: flex;
+        .field {
+          .meat-image {
+            width: 500px;
+          }
+        }
+        .first-block {
+          padding-left: 30px;
+          padding-right: 100px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 680px) {
+  .users-show {
+    .profile {
+      
+      .profile-top {
+
+      }
+    }
+    .post-field {
+      padding: 10px;
+      .post-time { 
+        
+      }
+      .post-block {
+        padding: 10px;
+        .field {
+          .meat-image {
+            width: 100%;
+          }
+        }
+        .first-block {
+
+        }
+      }
+    }
+  }
+}

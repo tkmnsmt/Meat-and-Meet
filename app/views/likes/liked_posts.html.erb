@@ -2,113 +2,127 @@
   <div class="index-field">
     <div class="container">
       <div class="row">
-        <% @likes.each do |post| %>
-          <div class="post-field">
-            <div class="post-time">
-              <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
-            </div>
-            <div class="my-block">
-              <% if user_signed_in? %>
-                <% if current_user.persisted? && current_user.image? %>
-                  <% if post.user.image? %>
-                    <a href="<%= user_path(id: post.user_id) %>">
-                      <%= image_tag post.user.image.to_s, class: "icon" %>
-                      <%= post.user.name %>
-                    </a>
+        <h2>いいね一覧</h2>
+        <div class="col-md-12">
+          <% @likes.each do |post| %>
+            <div class="post-field col-md-12">
+              <div class="post-time">
+                <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
+              </div>
+              <div class="my-block">
+                <% if user_signed_in? %>
+                  <% if current_user.persisted? && current_user.image? %>
+                    <% if post.user.image? %>
+                      <a class="user-icon" href="<%= user_path(id: post.user_id) %>">
+                        <%= image_tag post.user.image.to_s, class: "icon" %>
+                      </a>
+                      <a class="user" href="<%= user_path(id: post.user_id) %>">
+                        <%= post.user.name %>
+                      </a>
+                    <% else %>
+                      <a class="user-icon" href="<%= user_path(id: post.user_id) %>">
+                        <%= image_tag '/no_image.png', class: "icon" %>
+                      </a>
+                      <a class="user" href="<%= user_path(id: post.user_id) %>">
+                        <%= post.user.name %>
+                      </a>
+                    <% end %>
                   <% else %>
-                    <a href="<%= user_path(id: post.user_id) %>">
-                      <%= image_tag '/no_image.png', class: "icon" %>
-                      <%= post.user.name %>
-                    </a>
+                    <% if post.user.image? %>
+                      <a class="user-icon" href="<%= user_path(id: post.user_id) %>">
+                        <%= image_tag post.user.image.to_s, class: "icon" %>
+                      </a>
+                      <a class="user" href="<%= user_path(id: post.user_id) %>">
+                        <%= post.user.name %>
+                      </a>
+                    <% else %>
+                      <a class="user-icon" href="<%= user_path(id: post.user_id) %>">
+                        <%= image_tag '/no_image.png', class: "icon" %>
+                      </a>
+                      <a class="user" href="<%= user_path(id: post.user_id) %>">
+                        <%= post.user.name %>
+                      </a>
+                    <% end %>
                   <% end %>
                 <% else %>
                   <% if post.user.image? %>
-                    <a href="<%= user_path(id: post.user_id) %>">
+                    <a class="user-icon" href="<%= user_path(id: post.user_id) %>">
                       <%= image_tag post.user.image.to_s, class: "icon" %>
+                    </a>
+                    <a class="user" href="<%= user_path(id: post.user_id) %>">
                       <%= post.user.name %>
                     </a>
                   <% else %>
-                    <a href="<%= user_path(id: post.user_id) %>">
+                    <a class="user-icon" href="<%= user_path(id: post.user_id) %>">
                       <%= image_tag '/no_image.png', class: "icon" %>
+                    </a>
+                    <a class="user" href="<%= user_path(id: post.user_id) %>">
                       <%= post.user.name %>
                     </a>
                   <% end %>
                 <% end %>
-              <% else %>
-                <% if post.user.image? %>
-                  <a href="<%= user_path(id: post.user_id) %>">
-                    <%= image_tag post.user.image.to_s, class: "icon" %>
-                    <%= post.user.name %>
-                  </a>
-                <% else %>
-                  <a href="<%= user_path(id: post.user_id) %>">
-                    <%= image_tag '/no_image.png', class: "icon" %>
-                    <%= post.user.name %>
-                  </a>
-                <% end %>
+              </div>
+              <div class="post-block">
+                <div class="first-block">
+                  <div class="restaurant-field">
+                    <span >お店の名前</span><br>
+                    <%= link_to post.restaurant_name, post.url, class: "restaurant-name", target: "_blank" %>
+                  </div>
 
-              <% end %>
-            </div>
-            <div class="post-block">
-              <div class="first-block">
-                <div class="restaurant-field">
-                  <span >お店の名前</span><br>
-
-                  <span class="restaurant-name">　<%= post.restaurant_name %></span>
+                  <div class="field">
+                    <span><%= image_tag post.image.to_s, class: "meat-image" %></span>
+                  </div>
                 </div>
+                <div class="second-block">
+                  <!-- <div class="field">
+                    <span class="title">リンク</span><br>
+                    <span>　<a href="<%= post.url %>" target="_blank"><%= post.url %></a></span>
+                  </div> -->
 
-                <div class="field">
-                  <span><%= image_tag post.image.to_s, class: "meat-image" %></span>
+                  <div class="field">
+                    <span class="title">住所</span><br>
+                    <span>　<%= post.address %></span>
+                  </div>
+
+                  <div class="field">
+                    <span class="title">ジャンル</span><br>
+                    <span>　<%= post.genre %></span>
+                  </div>
+
+                  <div class="field">
+                    <span class="title">評価</span><br>
+                    　
+                    <span class="average-star" score="<%= post.average %>"></span>
+                    <span><%= post.average %></span>
+                  </div>
+
+                  <div class="field reputation-field">
+                    <span class="title">口コミ</span><br>
+                    　
+                    <span><%= post.reputation %></span>
+                  </div>
+
+                  <div class="posts-show-like">
+                    <a href="/posts/<%= post.id %>/likes" class="number-likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
+                    <div class="posts-show-like-icon">
+                      <div id="likes_buttons_<%= post.id %>">
+                        <%= render partial: 'likes/like', locals: { post: post } %>
+                      </div>
+
+                      <%= link_to "詳細", post_path(post.id), class: "syosai" %>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-              <div class="second-block">
-                <div class="field">
-                  <span class="title">リンク</span><br>
-                  <span>　<a href="<%= post.url %>" target="_blank"><%= post.url %></a></span>
-                </div>
-
-                <div class="field">
-                  <span class="title">住所</span><br>
-                  <span>　<%= post.address %></span>
-                </div>
-
-                <div class="field">
-                  <span class="title">ジャンル</span><br>
-                  <span>　<%= post.genre %></span>
-                </div>
-
-                <div class="field">
-                  <span class="title">評価</span><br>
-                  　
-                  <span class="average-star" score="<%= post.average %>"></span>
-                  <span><%= post.average %></span>
-                </div>
-
-                <div class="field">
-                  <span class="title">口コミ</span><br>
-                  　
-                  <span><%= post.reputation %></span>
-                </div>
-
-                <%= link_to post_path(post.id) do %>
-                  <i class="fas fa-info-circle"></i>
-                <% end %>
-
-                <%# if post.likes.count != 0 %>
-                  <a href="/posts/<%= post.id %>/likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
-                <%# end %><br>
-
-                <div id="likes_buttons_<%= post.id %>">
-                   <%= render partial: 'likes/like', locals: { post: post } %>
-                </div>
-
-              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <%= paginate @likes %>
+    <div class="pagenation">
+      <%= paginate @likes %>
+    </div>
   </div>
 </div>
 

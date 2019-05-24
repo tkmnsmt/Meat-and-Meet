@@ -1,0 +1,36 @@
+.rooms-index {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  background-color: rgba(221, 53, 69, 0.1);
+  .message-users {
+
+    h2 {
+      text-align: center;
+    }
+    // .message-user {
+      background-color: white;
+      width: 100%;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 20px;
+      .link {
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+        .icon {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .user-name {
+          font-size: 20px;
+          color: black;
+        }
+      }
+      .link:hover {
+        background-color: rgba(221, 53, 69, 0.1);
+      }
+    // }
+  }
+}

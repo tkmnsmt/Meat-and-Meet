@@ -1,0 +1,118 @@
+.rooms-show {
+  padding-top: 50px;
+  background-color: rgba(221, 53, 69, 0.1);
+  .messages-field {
+    background-color: rgba(221, 53, 69, 0.3);
+    padding-bottom: 20px;
+    border-radius: 20px;
+    .your-name-block {
+      .message-user {
+        text-align: center;
+        padding: 20px 0;
+        margin-bottom: 30px;
+        background-color: #273246;
+        border-radius: 20px 20px 0 0;
+        a {
+          color: white;
+          text-decoration: none;
+        }
+        a:hover {
+          color: rgba(221, 53, 69, 1);
+        }
+      }
+    }
+    #message-block-js{
+      overflow: scroll;
+      overflow-x: hidden;
+      height: 60vh;
+    }
+    .message-block {
+      padding: 0 20px;
+      .my-messages {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 15px;
+        .my-message-block {
+          background-color: rgba(221, 53, 69, 0.9);
+          padding: 10px;
+          border-radius: 20px;
+          max-width: 60%;
+          .my-message {
+            float: right;
+          }
+          .send-time {
+            float: right;
+          }
+        }
+        .icon {
+          margin-left: 10px;
+        }
+      }
+      .your-messages {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        .icon {
+          margin-right: 10px;
+        }
+        .your-message-block {
+          background-color: white;
+          padding: 10px;
+          border-radius: 20px;
+          max-width: 60%;
+        }
+      }
+      .icon-link {
+        text-decoration: none;
+      }
+      .icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .send-time {
+        font-size: 13px;
+      }
+    }
+    .message-submit-field {
+      margin-top: 30px;
+      padding: 0 20px;
+      .message-submit-block {
+        display: inline-block;
+        width: 88%;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (min-width: 681px) {
+  .rooms-show {
+    .messages-field {
+      margin: 20px;
+      margin-bottom: 50px;
+      .message-submit-field {
+        .message-submit-block {
+          width: 88%;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 680px) {
+  .rooms-show {
+    .messages-field {
+      margin-bottom: 20px;
+      .message-submit-field {
+        .message-submit-block {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

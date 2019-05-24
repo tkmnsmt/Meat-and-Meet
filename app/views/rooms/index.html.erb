@@ -1,7 +1,25 @@
 <div class="rooms-index">
-  <% @anotherEntries.each do |e| %>
-    <%= link_to room_path(e.room.id) do %>
-        <%= e.user.name %>とのDM<br>
-    <% end %>
-  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+
+      <div class="col-md-6 message-users">
+        <h2>メッセージ一覧</h2>
+        <% @anotherEntries.each do |e| %>
+          <!-- <div class="message-user"> -->
+            <%= link_to room_path(e.room.id), class: "link" do %>
+              <%= image_tag e.user.image.to_s, class: "icon" %>
+              <span class="user-name"><%= e.user.name %></span>
+            <% end %>
+          <!-- </div> -->
+        <% end %>
+      </div>
+
+      <div class="col-md-3">
+
+      </div>
+    </div>
+  </div>
 </div>

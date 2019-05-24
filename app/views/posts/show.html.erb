@@ -19,27 +19,35 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="new-field">
+          <div class="edit-field">
             <%= form_for @post do |p| %>
               <div class="field">
                 <%= p.label :"お店の名前" %>
                 <%= p.text_field :restaurant_name %>
               </div>
-              <div class="field">
-                <%= p.label "写真" %>
-                <%= p.file_field :image %>
-              </div>
+
+              <%= p.file_field :image, id: 'post_img' %>
+              <%#= f.label :image, "プロフィール画像" %>
+              <!-- <img id="image_prev" src="/no_image.png" class='hidden' /> -->
+              <% if current_user.persisted? && current_user.image? %>
+                <%= image_tag @post.image.to_s, id: "image_prev", class: 'hidden' %>
+
+              <% else %>
+                <%= image_tag '', class: 'hidden', id: "image_prev" %>
+                <%= p.hidden_field :image_cache %>
+              <% end %>
+
               <div class="field">
                 <%= p.label "リンク" %>
-                <%= p.text_field :url %>
+                <%= p.text_field :url, class: "form" %>
               </div>
               <div class="field">
                 <%= p.label "住所" %>
-                <%= p.text_field :address %>
+                <%= p.text_field :address, class: "form" %>
               </div>
               <div class="field">
                 <%= p.label "ジャンル" %>
-                <%= p.select :genre, [["ステーキ","ステーキ"],["焼き肉","焼き肉"]] %>
+                <%= p.select :genre, [["ステーキ","ステーキ"],["焼き肉","焼き肉"],["その他","その他"]] %>
               </div>
               <div class="field">
                 <%= p.label "味" %>
@@ -88,161 +96,180 @@
 
   <div class="container">
     <div class="row">
-      <div class="post-field">
-        <div class="post-time">
-          <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
-        </div>
-        <div class="my-block">
-          <% if user_signed_in? %>
-            <% if current_user.persisted? && current_user.image? %>
-              <% if @post.user.image? %>
-                <a href="<%= user_path(id: @post.user_id) %>">
-                  <%= image_tag @post.user.image.to_s, class: "icon" %>
-                  <%= @post.user.name %>
-                </a>
+      <div class="col-md-12">
+        <div class="post-field">
+          <div class="post-time">
+            <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </div>
+          <div class="my-block">
+            <div class="user-name-image">
+              <% if user_signed_in? %>
+                <% if current_user.persisted? && current_user.image? %>
+                  <% if @post.user.image? %>
+                    <a class="user-icon" href="<%= user_path(id: @post.user_id) %>">
+                      <%= image_tag @post.user.image.to_s, class: "icon" %>
+                    </a>
+                    <a class="user" href="<%= user_path(id: @post.user_id) %>">
+                      <%= @post.user.name %>
+                    </a>
+                  <% else %>
+                    <a class="user-icon" href="<%= user_path(id: @post.user_id) %>">
+                      <%= image_tag '/no_image.png', class: "icon" %>
+                    </a>
+                    <a class="user" href="<%= user_path(id: @post.user_id) %>">
+                      <%= @post.user.name %>
+                    </a>
+                  <% end %>
+                <% else %>
+                  <% if @post.user.image? %>
+                    <a class="user-icon" href="<%= user_path(id: @post.user_id) %>">
+                      <%= image_tag @post.user.image.to_s, class: "icon" %>
+                    </a>
+                    <a class="user" href="<%= user_path(id: @post.user_id) %>">
+                      <%= @post.user.name %>
+                    </a>
+                  <% else %>
+                    <a class="user-icon" href="<%= user_path(id: @post.user_id) %>">
+                      <%= image_tag '/no_image.png', class: "icon" %>
+                    </a>
+                    <a class="user" href="<%= user_path(id: @post.user_id) %>">
+                      <%= @post.user.name %>
+                    </a>
+                  <% end %>
+                <% end %>
               <% else %>
-                <a href="<%= user_path(id: @post.user_id) %>">
-                  <%= image_tag '/no_image.png', class: "icon" %>
-                  <%= @post.user.name %>
-                </a>
-              <% end %>
-            <% else %>
-              <% if @post.user.image? %>
-                <a href="<%= user_path(id: @post.user_id) %>">
-                  <%= image_tag @post.user.image.to_s, class: "icon" %>
-                  <%= @post.user.name %>
-                </a>
-              <% else %>
-                <a href="<%= user_path(id: @post.user_id) %>">
-                  <%= image_tag '/no_image.png', class: "icon" %>
-                  <%= @post.user.name %>
-                </a>
-              <% end %>
-            <% end %>
-          <% else %>
-            <% if @post.user.image? %>
-              <a href="<%= user_path(id: @post.user_id) %>">
-                <%= image_tag @post.user.image.to_s, class: "icon" %>
-                <%= @post.user.name %>
-              </a>
-            <% else %>
-              <a href="<%= user_path(id: @post.user_id) %>">
-                <%= image_tag '/no_image.png', class: "icon" %>
-                <%= @post.user.name %>
-              </a>
-            <% end %>
-          <% end %>
-          <% if user_signed_in? && current_user.id == @post.user_id %>
-            <div class="justify-content-end">
-              <button class="modal-edit btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-edit"></i></button>
-              <%= link_to post_path(@post.id), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} do %>
-                <i class="fas fa-trash-alt"></i>
+                <% if @post.user.image? %>
+                  <a class="user-icon" href="<%= user_path(id: @post.user_id) %>">
+                    <%= image_tag @post.user.image.to_s, class: "icon" %>
+                  </a>
+                  <a class="user" href="<%= user_path(id: @post.user_id) %>">
+                    <%= @post.user.name %>
+                  </a>
+                <% else %>
+                  <a class="user-icon" href="<%= user_path(id: @post.user_id) %>">
+                    <%= image_tag '/no_image.png', class: "icon" %>
+                  </a>
+                  <a class="user" href="<%= user_path(id: @post.user_id) %>">
+                    <%= @post.user.name %>
+                  </a>
+                <% end %>
               <% end %>
             </div>
-          <% end %>
-        </div>
-        <div class="post-block">
-          <div class="first-block">
-            <div class="restaurant-field">
-              <span>お店の名前</span><br>
-              <span class="restaurant-name">　<%= @post.restaurant_name %></span>
-            </div>
-
-            <div class="field">
-              <span><%= image_tag @post.image.to_s, class: "meat-image" %></span>
+            <div class="edit-destroy">
+              <% if user_signed_in? && current_user.id == @post.user_id %>
+                <button class="modal-edit btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-edit"></i></button>
+                <%= link_to post_path(@post.id), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか？"} do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              <% end %>
             </div>
           </div>
-          <div class="second-block">
-            <div class="field">
-              <span class="title">リンク</span><br>
-              <span>　<a href="<%= @post.url %>" target="_blank"><%= @post.url %></a></span>
+          <div class="post-block">
+            <div class="first-block">
+              <div class="restaurant-field">
+                <span>お店の名前</span><br>
+                <%= link_to @post.restaurant_name, @post.url, class: "restaurant-name", target: "_blank" %>
+              </div>
+
+              <div class="field">
+                <span><%= image_tag @post.image.to_s, class: "meat-image" %></span>
+              </div>
+            </div>
+            <div class="second-block">
+              <!-- <div class="field">
+                <span class="title">リンク</span><br>
+                <span>　<a href="<%= @post.url %>" target="_blank"><%= @post.url %></a></span>
+              </div> -->
+
+              <div class="field">
+                <span class="title">住所</span><br>
+                　
+                <span><%= @post.address %></span>
+              </div>
+
+              <div id=map>
+
+              </div>
+
+              <div class="field">
+                <span class="title">ジャンル</span><br>
+                　
+                <span><%= @post.genre %></span>
+              </div>
+
+              <div class="field">
+                <span class="title">評価</span>
+              </div>
+
+              <div class="field">
+                　
+                <span>味</span>
+                <span id="taste" score="<%= @post.taste %>"></span>
+              </div>
+              <div class="field">
+                　
+                <span>コストパフォーマンス</span>
+                <span id="cost_performance" score="<%= @post.cost_performance %>"></span>
+              </div>
+              <div class="field">
+                　
+                <span>雰囲気</span>
+                <span id="atmosphere" score="<%= @post.atmosphere %>"></span>
+              </div>
+              <div class="field">
+                　
+                <span>サービス</span>
+                <span id="service" score="<%= @post.service %>"></span>
+              </div>
+
+              <div class="field">
+                <span class="title">口コミ</span><br>
+                　
+                <span><%= @post.reputation %></span>
+              </div>
+
+              <div class="posts-like">
+                <a href="/posts/<%= @post.id %>/likes" class="number-likes" id="number_like_<%= @post.id %>"><%= @post.likes.count %>件のいいね</a>
+                <div class="posts-like-icon">
+                  <div id="likes_buttons_<%= @post.id %>">
+                    <%= render partial: 'likes/like', locals: { post: @post } %>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
-            <div class="field">
-              <span class="title">住所</span><br>
-              <span>　<%= @post.address %></span>
-            </div>
-
-            <div id=map>
-
-            </div>
-
-            <div class="field">
-              <span class="title">ジャンル</span><br>
-              <span>　<%= @post.genre %></span>
-            </div>
-
-            <div class="field">
-              <span class="title">評価</span>
-            </div>
-
-            <div class="field">
-              <span>　味</span>
-              <span id="taste" score="<%= @post.taste %>"></span>
-              <%= @post.taste %>
-            </div>
-            <div class="field">
-              <span>　コストパフォーマンス</span>
-              <span id="cost_performance" score="<%= @post.cost_performance %>"></span>
-              <%= @post.cost_performance %>
-            </div>
-            <div class="field">
-              <span>　雰囲気</span>
-              <span id="atmosphere" score="<%= @post.atmosphere %>"></span>
-              <%= @post.atmosphere %>
-            </div>
-            <div class="field">
-              <span>　サービス</span>
-              <span id="service" score="<%= @post.service %>"></span>
-              <%= @post.service %>
-            </div>
-
-            <div class="field">
-              <span class="title">口コミ</span><br>
-              <span>　<%= @post.reputation %></span>
-            </div>
-
-            <%# if post.likes.count != 0 %>
-              <a href="/posts/<%= @post.id %>/likes" id="number_like_<%= @post.id %>"><%= @post.likes.count %>件のいいね</a>
-            <%# end %><br>
-
-            <div id="likes_buttons_<%= @post.id %>">
-               <%= render partial: 'likes/like', locals: { post: @post } %>
-            </div>
 
 
+            <script type="text/javascript">
+              function initMap() {
+
+                var test = {lat:<%= @post.latitude %>, lng:<%= @post.longitude %>};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: test
+                });
+                var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+
+                var contentString = '住所：<%= @post.address %>';
+                var infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                });
+
+                marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                });
+              }
+
+            </script>
           </div>
-
-
-
-          <script type="text/javascript">
-            function initMap() {
-
-              var test = {lat:<%= @post.latitude %>, lng:<%= @post.longitude %>};
-              var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: test
-              });
-              var transitLayer = new google.maps.TransitLayer();
-              transitLayer.setMap(map);
-
-              var contentString = '住所：<%= @post.address %>';
-              var infowindow = new google.maps.InfoWindow({
-                content: contentString
-              });
-
-              var marker = new google.maps.Marker({
-                position:test,
-                map: map,
-                title: contentString
-              });
-
-              marker.addListener('click', function() {
-                infowindow.open(map, marker);
-              });
-            }
-
-          </script>
         </div>
       </div>
     </div>
@@ -313,7 +340,10 @@
     })
 
   </script>
+
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCzCKcmeaX7BJD2w73W5BZT3Mk_twwfX_M&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLEMAP_API_ID']%>&callback=initMap">
+
   </script>
+
 </div>

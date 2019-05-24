@@ -1,0 +1,32 @@
+.likes-index {
+  padding-top: 100px;
+  background-color: rgba(221, 53, 69, 0.1);
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .link-block {
+    text-decoration: none;
+    .profiles {
+      background-color: white;
+      color: black;
+      width: 100%;
+      margin-bottom: 50px;
+      padding: 30px;
+      // border: 3px solid rgba(221, 53, 69, 1);
+      border-radius: 20px;
+      .field {
+        margin-bottom: 5px;
+      }
+      .icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    .profiles:hover {
+      background-color: rgba(221, 53, 69, 0.1);
+    }
+  }
+}

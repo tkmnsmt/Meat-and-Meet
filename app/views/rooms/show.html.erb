@@ -1,27 +1,42 @@
 <div class="rooms-show">
-  <h1>DM</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
 
-  <h4>参加者</h4>
-  <% @entries.each do |e| %>
-    <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
-  <% end %>
+      </div>
 
-  <hr>
-  <% if @messages.present? %>
-    <% @messages.each do |m| %>
-      <strong><%= m.content %></strong>
-      <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-      <hr>
-    <% end %>
-  <% else %>
-    <h3 class="text-center">メッセージはまだありません</h3>
-  <% end %>
+      <div class="col-md-6">
+        <div class="messages-field">
+          <div class="your-name-block">
+            <% @entries.each do |e| %>
+              <% unless user_signed_in? && current_user.id == e.user_id %>
+                <h4 class="message-user"><strong><a href="/users/<%= e.user.id %>"><%= e.user.name %></a></strong></h4>
+              <% end %>
+            <% end %>
+          </div>
+          <div id="message-block-js">
+            <%= render partial: 'chat', locals: { messages: @messages } %>
+          </div>
+          <div class="message-submit-field">
+            <div id="sends_buttons">
+              <%= render partial: 'send', locals: { message: @message } %>
+            </div>
 
-  <%= form_for @message do |f| %>
-    <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <br>
-    <%= f.submit "投稿する" %>
-  <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
 
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  $(function(){
+    $("#message-block-js").animate({ scrollTop: $("#message-block-js")[0].scrollHeight}, "slow");
+    $("#message_btn").click(function(){
+      $("#message-block-js").animate({ scrollTop: $("#message-block-js")[0].scrollHeight}, "slow");
+    })
+  });
+</script>

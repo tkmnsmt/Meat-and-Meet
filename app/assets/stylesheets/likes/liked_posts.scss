@@ -1,0 +1,142 @@
+.likes-liked_posts {
+  .index-field {
+    padding-top: 100px;
+    background-color: rgba(221, 53, 69, 0.1);
+    h2 {
+      margin: 0 auto;
+    }
+    .post-field {
+      background-color: white;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      .post-time {
+        margin-bottom: 5px;
+      }
+      .my-block {
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid rgba(221, 53, 69, 1);
+        .user-icon {
+          text-decoration: none;
+        }
+        .icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .user {
+          color: black;
+          font-size: 20px;
+          font-weight: bold;
+          border-bottom: 1px solid black;
+        }
+        .user:hover {
+          color: rgba(221, 53, 69, 1);
+          border-bottom: 1px solid rgba(221, 53, 69, 1);
+        }
+      }
+      .post-block {
+        
+        .field {
+          .meat-image {
+          }
+        }
+        .first-block {
+          
+          .restaurant-field {
+            padding-bottom: 20px;
+            .restaurant-name {
+              color: rgba(221, 53, 69, 1);
+              font-size: 25px;
+              font-weight: bold;
+              margin-left: 16px;
+              border-bottom: 1px solid rgba(221, 53, 69, 1);
+            }
+          }
+        }
+        .second-block {
+          .field {
+            padding-bottom: 15px;
+            .title {
+              font-size: 18px;
+            }
+          }
+          .reputation-field {
+            padding-bottom: 30px;
+          }
+          .posts-show-like {
+            .number-likes {
+              color: black;
+              border-bottom: 1px solid black;
+            }
+            .number-likes:hover {
+              color: rgba(221, 53, 69, 1);
+              border-bottom: 1px solid rgba(221, 53, 69, 1);
+            }
+            .posts-show-like-icon {
+              display: flex;
+              align-items: flex-end;
+              padding-top: 10px;
+              .icon-link {
+                text-decoration: none;
+              }
+              .icon {
+                color: rgba(221, 53, 69, 1);
+                font-size: 20px;
+              }
+              .likes-count {
+                padding-right: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 681px) {
+  .likes-liked_posts {
+    .index-field {
+      .post-field {
+      padding: 30px;
+        .post-block {
+          display: flex;
+          .field {
+            .meat-image {
+              width: 450px;
+            }
+          }
+          .first-block {
+            padding-left: 30px;
+            padding-right: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .likes-liked_posts {
+    .index-field {
+      .post-field {
+        padding: 10px;
+        .post-block {
+          .field {
+            .meat-image {
+              width: 100%;
+            }
+          }
+          .first-block {
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}

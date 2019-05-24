@@ -7,75 +7,42 @@
 
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">投稿</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="new-field">
-            <%= form_for @post do |p| %>
-              <div class="field">
-                <%= p.label :"お店の名前" %>
-                <%= p.text_field :restaurant_name %>
-              </div>
-              <div class="field">
-                <%= p.label "写真" %>
-                <%= p.file_field :image %>
-              </div>
-              <div class="field">
-                <%= p.label "リンク" %>
-                <%= p.text_field :url %>
-              </div>
-              <div class="field">
-                <%= p.label "住所" %>
-                <%= p.text_field :address %>
-              </div>
-              <div class="field">
-                <%= p.label "ジャンル" %>
-                <%= p.select :genre, [["ステーキ","ステーキ"],["焼き肉","焼き肉"]] %>
-              </div>
-              <div class="field">
-                <%= p.label "味" %>
-                <span id="taste-star"></span>
-                <%= p.hidden_field :taste, id: "post-taste-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "コストパフォーマンス" %>
-                <span id="cost_performance-star"></span>
-                <%= p.hidden_field :cost_performance, id: "post-cost_performance-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "雰囲気" %>
-                <span id="atmosphere-star"></span>
-                <%= p.hidden_field :atmosphere, id: "post-atmosphere-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "サービス" %>
-                <span id="service-star"></span>
-                <%= p.hidden_field :service, id: "post-service-star" %>
-              </div>
-              <div class="field">
-                <%= p.label "口コミ" %>
-                <%= p.text_area :reputation, :maxlength => "255", class: "form-control" %>
-              </div>
 
-              <div class="modal-footer">
-                <%= p.submit "投稿する", class: "btn btn-danger" %>
-              </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%# <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5> %>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+            <% if current_user.persisted? && current_user.image? %>
+              <% if @user.image? %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "user-icon" %></a>
+              <% else %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "user-icon" %></a>
+              <% end %>
+            <% else %>
+              <% if @user.image? %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "user-icon" %></a>
+              <% else %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "user-icon" %></a>
+              <% end %>
             <% end %>
           </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">閉じる</button>
+        <%# <button type="button" class="btn btn-primary">Save changes</button> %>
       </div>
     </div>
   </div>
-
-
+</div>
 
 
 
@@ -85,40 +52,52 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-2">
+
+      </div>
+      <div class="col-md-8">
         <div class="profile">
-          <% if user_signed_in? && current_user.id.to_s == params[:id] %>
-            <h2>マイページ</h2>
-          <% else %>
-            <h2><%= @user.name %>のページ</h2>
-          <% end %>
-          <% if user_signed_in? && current_user.id.to_s == params[:id] %>
-            <%= link_to profile_edit_path, class: "btn btn-danger" do %>
-              <i class="fas fa-user-edit"></i>
-            <% end %>
-          <% end %>
-
-
-
-
-
-          <% if @user.id == current_user.id %>
-            <p><a href="/rooms">チャット一覧</a></p>
-          <% else %>
-            <% if @isRoom == true %>
-              <p><a href="/rooms/<%= @roomId %>">チャットへ</a></p>
-            <% else %>
-              <%= form_for @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, :value=> @user.id %>
-                <% end %>
-                <%= f.submit "チャットを始める" %>
+          <div class="profile-top">
+            <div class="page">
+              <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+                <h2>マイページ</h2>
+              <% else %>
+                <h2><%= @user.name %></h2>
               <% end %>
-            <% end %>
-          <% end %>
+            </div>
 
-          <a href="/likes/liked_posts/<%= @user.id %>">いいねしている投稿</a>
+            <div class="profile-icons">
 
+              <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+                <%= link_to profile_edit_path do %>
+                  <span><i class="fas fa-user-edit btn btn-danger"></i></span>
+                <% end %>
+              <% end %>
+
+              <div class="like-dm">
+                <span><a href="/likes/liked_posts/<%= @user.id %>"><i class="far fa-heart btn btn-danger"></i></a></span>
+
+                <% if @user.id == current_user.id %>
+                  <span><a href="/rooms"><i class="far fa-envelope btn btn-danger"></i></a></span>
+                <% else %>
+                  <% if @isRoom == true %>
+                    <span><a href="/rooms/<%= @roomId %>"><i class="far fa-comment btn btn-danger"></i></a></span>
+                  <% else %>
+                    <%= form_for @room do |f| %>
+                      <%= fields_for @entry do |e| %>
+                        <%= e.hidden_field :user_id, :value=> @user.id %>
+                      <% end %>
+                      <%= button_tag type: "submit", class: "btn btn-danger" do %>
+                        <span><i class="far fa-comment submit-btn"></i></span>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+
+            </div>
+
+          </div>
 
 
 
@@ -128,19 +107,22 @@
             <span>名前：</span>
             <span><%= @user.name %></span>
           </div>
+          <div class="field">
             <% if current_user.persisted? && current_user.image? %>
               <% if @user.image? %>
-                <%= image_tag @user.image.to_s, class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "icon" %></a>
               <% else %>
-                <%= image_tag '/no_image.png', class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "icon" %></a>
               <% end %>
             <% else %>
               <% if @user.image? %>
-                <%= image_tag @user.image.to_s, class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag @user.image.to_s, class: "icon" %></a>
               <% else %>
-                <%= image_tag '/no_image.png', class: "icon" %>
+                <a href="" data-toggle="modal" data-target="#exampleModalCenter"><%= image_tag '/no_image.png', class: "icon" %></a>
               <% end %>
             <% end %>
+          </div>
+
           <div class="field">
             <span>年齢：</span>
             <span><%= @user.age %>歳</span>
@@ -150,6 +132,9 @@
             <span><%= @user.introduce %></span>
           </div>
         </div>
+      </div>
+      <div class="col-md-2">
+
       </div>
     </div>
   </div>
@@ -162,62 +147,64 @@
     <div class="index-field">
       <div class="container">
         <div class="row">
-          <div class="post-field">
-            <div class="post-time">
-              <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
-            </div>
-            <div class="post-block">
-              <div class="first-block">
-                <div class="restaurant-field">
-                  <span>お店の名前</span><br>
-                  <span class="restaurant-name">　<%= post.restaurant_name %></span>
-                </div>
-
-                <div class="field">
-                  <span><%= image_tag post.image.to_s, class: "meat-image" %></span>
-                </div>
+          <div class="col-md-12">
+            <div class="post-field">
+              <div class="post-time">
+                <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
               </div>
-              <div class="second-block">
-                <div class="field">
-                  <span class="title">リンク</span><br>
-                  <span>　<a href="<%= post.url %>" target="_blank"><%= post.url %></a></span>
+              <div class="post-block">
+                <div class="first-block">
+                  <div class="restaurant-field">
+                    <span>お店の名前</span><br>
+                    <%= link_to post.restaurant_name, post.url, class: "restaurant-name", target: "_blank" %>
+                  </div>
+
+                  <div class="field">
+                    <span><%= image_tag post.image.to_s, class: "meat-image" %></span>
+                  </div>
                 </div>
+                <div class="second-block">
+                  <!-- <div class="field">
+                    <span class="title">リンク</span><br>
+                    <span>　<a href="<%= post.url %>" target="_blank"><%= post.url %></a></span>
+                  </div> -->
 
-                <div class="field">
-                  <span class="title">住所</span><br>
-                  <span>　<%= post.address %></span>
+                  <div class="field">
+                    <span class="title">住所</span><br>
+                    　
+                    <span><%= post.address %></span>
+                  </div>
+
+                  <div class="field">
+                    <span class="title">ジャンル</span><br>
+                    　
+                    <span><%= post.genre %></span>
+                  </div>
+
+                  <div class="field">
+                    <span class="title">評価</span><br>
+                    　
+                    <span class="average-star" score="<%= post.average %>"></span>
+                    <span><%= post.average %></span>
+                  </div>
+
+                  <div class="field">
+                    <span class="title">口コミ</span><br>
+                    　
+                    <span><%= post.reputation %></span>
+                  </div>
+
+                  <div class="posts-show-like">
+                    <a href="/posts/<%= post.id %>/likes" class="number-likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
+                    <div class="posts-show-like-icon">
+                      <div id="likes_buttons_<%= post.id %>">
+                        <%= render partial: 'likes/like', locals: { post: post } %>
+                      </div>
+
+                      <%= link_to "詳細", post_path(post.id), class: "syosai" %>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="field">
-                  <span class="title">ジャンル</span><br>
-                  <span>　<%= post.genre %></span>
-                </div>
-
-                <div class="field">
-                  <span class="title">評価</span><br>
-                  <span class="average-star" score="<%= post.average %>">　</span>
-                  <span><%= post.average %></span>
-                </div>
-
-                <div class="field">
-                  <span class="title">口コミ</span><br>
-                  　
-                  <span><%= post.reputation %></span>
-                </div>
-
-                <%= link_to post_path(post.id) do %>
-                  <i class="fas fa-info-circle"></i>
-                <% end %>
-
-                <%# if post.likes.count != 0 %>
-                  <a href="/posts/<%= post.id %>/likes" id="number_like_<%= post.id %>"><%= post.likes.count %>件のいいね</a>
-                <%# end %><br>
-
-                <div id="likes_buttons_<%= post.id %>">
-                   <%= render partial: 'likes/like', locals: { post: post } %>
-                </div>
-
-
               </div>
             </div>
           </div>
@@ -225,7 +212,10 @@
       </div>
     </div>
   <% end %>
-  <%= paginate @posts %>
+  <div class="pagenation">
+    <%= paginate @posts %>
+  </div>
+
 
   <script>
     window.addEventListener('turbolinks:load',()=>{

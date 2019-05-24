@@ -14,8 +14,10 @@
  *= require_self
  */
 
+
 // @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&subset=cyrillic,cyrillic-ext,latin-ext';
 
 
 body {
@@ -25,50 +27,145 @@ body {
 header {
   font-family: 'Francois One', 'Kosugi', sans-serif;
   .navbar {
-     position: fixed;
-     height: 8vh;
-     width: 100%;
-     z-index: 100;
-     background-color: #de4b4b !important;
-   .navbar-brand {
-     color: white;
-     font-size: 25px;
-   }
-   .navbar-brand:hover {
-     color: white;
-   }
-   .navbar-nav {
-     display: flex;
-     align-items: center;
-   }
-   .nav-link {
-     color: rgba(224, 220, 220, 0.9) !important;
-     font-size: 17px;
-     margin: auto;
-   }
-   .nav-link:hover {
-     color: white !important;
-   }
-   .modal-new {
-     cursor: pointer;
-   }
-   .icon {
-     margin-right: 5px;
-     width: 50px;
-     height: 50px;
-     border-radius: 50%;
-     object-fit: cover;
-   }
- }
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: #dc3545 !important;
+    .border_bottom_btn {
+      font-size: 30px;
+      padding: 0px !important;
+      letter-spacing: -1px;
+      position: relative;
+      display: inline-block;
+      color: #fff !important;
+      text-decoration: none; 
+    }
+    .border_bottom_btn:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .border_bottom_btn::after {
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 2.5px;
+      background: #fff;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+    }
+    .border_bottom_btn:hover::after {
+      bottom: 0px;
+      opacity: 1;
+      visibility: visible;
+    }
+    .bottom_btn {
+      font-size: 30px;
+      padding: 0px !important;
+      letter-spacing: -1px;
+      position: relative;
+      display: inline-block;
+      color: #fff !important;
+      text-decoration: none;
+    }
+    .navbar-collapse {
+      .navbar-nav {
+        .search-btn {
+          color: white;
+          font-size: 17px;
+          font-weight: bold;
+          background: none;
+          border: 1px solid white;
+          cursor: pointer;
+          transition: .5s;
+          margin-right: 10px;
+        }
+        .search-btn:hover {
+          color: #dc3545;
+          background-color: white;
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          .user-name {
+            margin-left: 0;
+            padding-left: 0;
+          }
+        }
+      }
+    }
+    .border_slide_btn {
+      font-size: 17px;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+      color: #fff !important;
+      text-decoration: none;
+      margin: 5px;
+      padding: 3px 5px !important;
+    }
+    .border_slide_btn:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .border_slide_btn::after {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      transform: scale(0, 1);
+      transform-origin: right top;
+      transition: transform .3s;
+    }
+    .border_slide_btn:hover::after {
+      transform-origin: left top;
+      transform: scale(1, 1);
+    }
+    .modal-new {
+      cursor: pointer;
+    }
+    .user-icon {
+      color: white !important;
+      padding-right: 0 !important;
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
 }
 
+.syosai {
+  font-size: 18px;
+  padding: 1px 5px;
+  color: #dc3545;
+  border: 1px solid rgba(221, 53, 69, 1);
+  border-radius: 5px;
+}
+.syosai:hover {
+  color: white;
+  background-color: #dc3545;
+  text-decoration: none;
+  transition: .3s;
+}
 
-
-
-
+.pagenation {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}
 footer {
   height: 5vh;
-  background-color: #de4b4b;
+  background-color: #dc3545;
   bottom: 0;
   width: 100%;
   display: flex;
@@ -78,5 +175,46 @@ footer {
     color: rgb(231, 231, 231);
     font-size: 14px;
     margin-bottom: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 681px){
+  header {
+    .navbar {
+      height: 8vh;
+      .navbar-collapse {
+        display: flex;
+        justify-content: flex-end;
+        .navbar-nav {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 680px){
+  header {
+
   }
 }

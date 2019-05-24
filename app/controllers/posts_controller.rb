@@ -1,9 +1,18 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order("id DESC").page(params[:page]).per(5)
+    if params[:search] == nil
+      @posts = Post.all.order("id DESC").page(params[:page]).per(5)
+    elsif params[:search] == ""
+      @posts = Post.all.order("id DESC").page(params[:page]).per(5)
+    else
+      #部分検索
+      @posts = Post.where("restaurant_name LIKE ? ", '%' + params[:search] + '%').page(params[:page]).per(5)
+    end
+    # @posts = Post.all.order("id DESC").page(params[:page]).per(5)
+
     @post = Post.new
     @like = Like.new
     if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
@@ -13,7 +22,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # binding.pry
     @like = Like.new
+    if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
+      redirect_to profile_edit_path
+    end
   end
 
   def new
