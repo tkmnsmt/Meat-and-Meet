@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "posts#index"
-  post '/' => 'posts#index'
+  post '/', to: 'posts#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :create, :show, :update, :destroy] do
     resources :likes, only: [:index, :create, :destroy]
   end
-  get "likes/liked_posts/:id" => "likes#liked_posts"
+  get "about", to: "posts#about"
+  get "likes/liked_posts/:id", to: "likes#liked_posts"
   resources :users, only: [:show]
   resources :messages, :only => [:create]
   resources :rooms, :only => [:index, :create, :show, :index]

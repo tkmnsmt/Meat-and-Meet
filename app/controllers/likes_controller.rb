@@ -11,7 +11,7 @@ class LikesController < ApplicationController
   end
 
   def liked_posts
-    @likes = User.find(params[:id]).liked_posts.order("id DESC").page(params[:page]).per(5)
+    @likes = User.find(params[:id]).liked_posts.order("id DESC").page(params[:page]).per(10)
 
     if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
       redirect_to profile_edit_path

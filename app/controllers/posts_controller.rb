@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   def index
     if params[:search] == nil
-      @posts = Post.all.order("id DESC").page(params[:page]).per(5)
+      @posts = Post.all.order("id DESC").page(params[:page]).per(10)
     elsif params[:search] == ""
-      @posts = Post.all.order("id DESC").page(params[:page]).per(5)
+      @posts = Post.all.order("id DESC").page(params[:page]).per(10)
     else
       #部分検索
       @posts = Post.where("restaurant_name LIKE ? ", '%' + params[:search] + '%').page(params[:page]).per(5)
@@ -18,6 +18,10 @@ class PostsController < ApplicationController
     if user_signed_in? && current_user.name == nil || user_signed_in? && current_user.introduce == nil || user_signed_in? && current_user.name == "" || user_signed_in? && current_user.introduce == ""
       redirect_to profile_edit_path
     end
+  end
+
+  def about
+    
   end
 
   def show

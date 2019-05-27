@@ -1,0 +1,38 @@
+<div class="posts-about">
+    <div class="top-image">
+        <div class="top-block">
+            <h1>Meat and Meet</h1>
+            <p>って何？？？</p>
+        </div>
+    </div>
+    <div class="about-field">
+        <div class="container">
+            <div class="row">
+                <div class="about-top col-md-12">
+                    <h2>Meat and Meetとは？</h2>
+                    <p>お肉を通じてお肉好きの人と繋がるサービス<br>
+                    お肉が好きという一つの共通点でマッチングしてみませんか？<br>
+                    <span>"あなたにミート、あなたとミート"</span></p>
+                </div>
+                <div class="block col-md-4">
+                    <h4>Step1</h4>
+                    <p>投稿する(Step2からも可)</p>
+                    <%= image_tag "/post.png", class: "post-image" %>
+                </div>
+                <div class="block col-md-4">
+                    <h4>Step2</h4>
+                    <p>気になるあの人にメッセージ</p>
+                    <%= image_tag "/message.png", class: "message-image" %>
+                </div>
+                <div class="block col-md-4">
+                    <h4>Step3</h4>
+                    <p>その人と好きなお肉を食べに！</p>
+                    <%= image_tag "/restaurant.png", class: "restaurant-image" %>
+                </div>
+                <div class="lets-post">
+                    <%= button_to "はじめる", new_user_session_path, class: "post-btn" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+.posts-about {
+    .top-image {
+        background: image-url("/top.png");
+        background-size: cover;
+        background-attachment: fixed;
+        .top-block {
+            h1 {
+                font-family: 'Francois One', sans-serif;
+                background-color: rgba(221, 53, 69, 0.8);
+                margin-bottom: 0;
+                padding-top: 7vh;
+                letter-spacing: -1px;
+                text-shadow: 5px 5px 1px rgba( 0, 0, 0, .7 );
+            }
+            p {
+                background-color: rgba(221, 53, 69, 0.8);
+                padding-bottom: 5vh;
+                letter-spacing: -1px;
+                text-shadow: 5px 5px 1px rgba( 0, 0, 0, .7 );
+            }
+        }
+    }
+    .about-field {
+        background-color: rgba(221, 53, 69, 0.1);
+        .about-top {
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            h2 {
+                font-family: 'Francois One', sans-serif;
+            }
+            p {
+                span {
+                    
+                    font-weight: bold;
+                }
+            }
+        }
+        .block {
+            text-align: center;
+            .post-image {
+                width: 100%;
+            }
+            .message-image {
+                width: 100%;
+            }
+            .restaurant-image {
+                width: 100%;
+            }
+        }
+        .lets-post {
+            margin: 0 auto;
+            margin-bottom: 50px;
+            .post-btn {
+                background: none;
+                background-color: rgba(221, 53, 69, 1);
+                color: white;
+                font-size: 30px;
+                padding: 10px 20px;
+                border: none;
+                border: 2px solid rgba(221, 53, 69, 0.1);
+                border-radius: 5px;
+                &:hover {
+                    background-color: white;
+                    color: rgba(221, 53, 69, 1);
+                    border: 2px solid rgba(221, 53, 69, 1);
+                    transition: .5s;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}   
+
+
+
+@media screen and (min-width: 681px){
+    .posts-about {
+        .top-image {
+            height: 100vh;
+            .top-block {
+                width: 43%;
+                color: white;
+                padding-top: 35vh;
+                text-align: center;
+                h1 {
+                    font-size: 85px;
+                }
+                p {
+                    font-size: 40px;
+                    
+                    span {
+                        font-size: 30px;
+                        font-weight: bold;
+                        text-shadow: none;
+                        line-height: 100px;
+                    }
+                }
+            }
+        }
+        .about-field {
+            .about-top {
+                h2 {
+                    font-size: 60px;
+                }
+                p {
+                    font-size: 20px;
+                    span {
+                        font-size: 25px;
+                    }
+                }
+            }
+            .block {
+
+            }
+            .lets-post {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width: 680px){
+    .posts-about {
+        .top-image {
+            height: 50vh;
+            .top-block {
+                width: 100%;
+                color: white;
+                padding-top: 15vh;
+                text-align: center;
+                h1 {
+                    font-size: 55px;
+                }
+                p {
+                    font-size: 25px;
+                }
+            }
+        }
+        .about-field {
+            .about-top {
+                h2 {
+
+                }
+                p {
+                    span {
+                        font-size: 18px;
+                    }
+                }
+            }
+            .block {
+                margin-bottom: 20px;
+                p {
+                    margin: 0;
+                }
+            }
+            .lets-post {
+
+            }
+        }
+    }
+}
