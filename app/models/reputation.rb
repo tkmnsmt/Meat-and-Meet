@@ -1,2 +1,0 @@
-class Reputation < ApplicationRecord
-end

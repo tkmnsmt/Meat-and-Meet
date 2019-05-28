@@ -1,18 +1,21 @@
 Rails.application.routes.draw do
-  root "posts#index"
-  post '/', to: 'posts#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :posts, only: [:index, :create, :show, :update, :destroy] do
-    resources :likes, only: [:index, :create, :destroy]
-  end
+  root "posts#index"
+  post '/', to: 'posts#index'
   get "about", to: "posts#about"
   get "likes/liked_posts/:id", to: "likes#liked_posts"
+
   resources :users, only: [:show]
   resources :messages, :only => [:create]
   resources :rooms, :only => [:index, :create, :show, :index]
+  resources :posts, only: [:index, :create, :show, :update, :destroy] do
+    resources :likes, only: [:index, :create, :destroy]
+  end
+
+  
   # resources :searches, only: [:index]
   devise_scope :user do
     get 'profile_edit', to: 'users/registrations#profile_edit', as: 'profile_edit'
