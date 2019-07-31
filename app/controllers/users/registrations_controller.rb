@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def profile_update
     current_user.assign_attributes(account_update_params)
     if current_user.save
-  	  redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id)
     else
       render "profile_edit"
     end
@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-   devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :image_cache, :remove_image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :image_cache, :remove_image])
   end
 
   def after_update_path_for(resource)
