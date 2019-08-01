@@ -33,6 +33,10 @@ $( document ).on('turbolinks:load', function() {
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
+<<<<<<< HEAD
+
+=======
+>>>>>>> 942124c6260b3c9b1d1181fc080a95ba44012584
       reader.onload = function (e) {
         $('#image_prev').attr('src', e.target.result);
       }
@@ -46,6 +50,10 @@ $( document ).on('turbolinks:load', function() {
     readURL(this);
   });
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 942124c6260b3c9b1d1181fc080a95ba44012584
 
 
 
