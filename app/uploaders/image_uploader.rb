@@ -66,23 +66,23 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # サムネイル画像
   version :thumb do
-     process resize_to_fill: [100, 100]
+    process resize_to_fill: [100, 100]
   end
 
   # 許可する画像の拡張子
   def extension_whitelist
-     %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png)
   end
 
   # 保存するファイルの命名規則
   def filename
-     "something.jpg" if original_filename
+    "something.jpg" if original_filename
   end
 
   protected
   # 一意となるトークンを作成
   def secure_token
-     var = :"@#{mounted_as}_secure_token"
-     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
 end
