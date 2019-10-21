@@ -86,6 +86,8 @@ gem 'http'
 
 gem 'dotenv-rails'
 
+gem 'cloudinary'
+
 group :production do
   gem 'pg'
 end

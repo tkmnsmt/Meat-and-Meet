@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params_new)
+    @post = Post.new(posts_params)
     @post.user_id = current_user.id
     @posts = Post.all.order("id DESC")
     if @post.save
@@ -59,8 +59,8 @@ class PostsController < ApplicationController
   end
 
   private
-  def params_new
-    params.require(:post).permit(:image, :url, :address, :latitude, :longitude, :restaurant_name, :taste, :cost_performance, :service, :atmosphere, :reputation, :genre)
+  def posts_params
+    params.require(:post).permit(:restaurant_name, :image, :url, :address, :genre, :taste, :cost_performance, :service, :atmosphere, :reputation)
   end
 
 
