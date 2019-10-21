@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile_update
-    current_user.assign_attributes(account_update_params)
+    current_user.assign_attributes(configure_account_update_params)
     if current_user.save
       redirect_to user_path(current_user.id)
     else
@@ -17,17 +17,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def after_sign_up_path_for(resource)
-    profile_edit_path
-  end
+    def after_sign_up_path_for(resource)
+      profile_edit_path
+    end
 
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :image_cache, :remove_image])
-  end
+    def configure_account_update_params
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :image_cache, :remove_image])
+    end
 
-  def after_update_path_for(resource)
-    account_page_path
-  end
+    def after_update_path_for(resource)
+      account_page_path
+    end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
