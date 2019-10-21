@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def profile_update
-    current_user.assign_attributes(configure_account_update_params)
+    current_user.assign_attributes(account_update_params)
     if current_user.save
       redirect_to user_path(current_user.id)
     else
