@@ -375,7 +375,6 @@
 
 <script>
   window.addEventListener('turbolinks:load',()=>{
-    console.log("index");
     const allStars = $(".average-star")
     allStars.each((_, elem)=>{
       const stars = $(elem)
@@ -390,7 +389,6 @@
 
 
   window.addEventListener('turbolinks:load',()=>{
-    console.log("new");
     $('#taste-star').raty({
       path: "/",
       click: function(score, _) {

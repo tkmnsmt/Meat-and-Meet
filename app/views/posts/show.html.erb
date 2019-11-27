@@ -282,7 +282,6 @@
 
   <script type="text/javascript">
     window.addEventListener('turbolinks:load',()=>{
-      console.log("show");
       const tasteStar = $("#taste")
       tasteStar.raty({
         path: "/",
@@ -308,7 +307,6 @@
         score: serviceStar.attr("score")
       })
 
-      console.log("edit");
       $('#taste-star').raty({
         path: "/",
         click: function(score, _) {
