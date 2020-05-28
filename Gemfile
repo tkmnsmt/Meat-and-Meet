@@ -75,7 +75,7 @@ gem 'jquery-rails'
 gem 'geocoder'
 gem 'font-awesome-sass', '5.3.1'
 
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 
 gem 'omniauth'
